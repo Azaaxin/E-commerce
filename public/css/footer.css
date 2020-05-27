@@ -1,0 +1,31 @@
+footer {
+    box-sizing: border-box;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    padding: 20px;
+    gap: 40px;
+    border-top: 5px solid #67539E;
+}
+
+footer > * {margin: 0 auto;}
+footer h5 {text-transform: uppercase;}
+footer p {color: #67539E; font-size: 1em;}
+footer a {color: #67539E; font-size: 1em;}
+.social img {width: 15%; margin: auto;}
+
+.social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+@media (min-width: 768px) {
+    footer {grid-template-columns: repeat(4, 1fr);}
+}
+
+@media (min-width: 1200px) {
+    footer {font-size: 1.5em;}
+}

@@ -1,9 +1,32 @@
+<!--- All included code is written by Ludvig Olausson --->
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Shop</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset='utf-8'>
+    <title>Trailstop</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/bar.css">
+    <link rel="stylesheet" href="css/front-page-products.css">
+    <link rel="stylesheet" href="css/recommended.css">
+    <script src="js/phone_menu.js"></script>
+    <style>#arrow_y{transition: .5s; margin: 0 auto;}</style>
 </head>
 <body>
-	<h1>Shop page</h1>
+<?php 
+    include "layout/header.php";
+    include "layout/phone_menu.php";
+    include "layout/front-page/slider.php";
+    include "layout/front-page/bar.php";
+    include "layout/front-page/front-page-products.php";
+    include "layout/front-page/bar-rec.php";
+    include "layout/front-page/recommended.php";
+    include "layout/footer.php";
+    
+?>
+    <script src="js/slider.js"></script>
+    <script src="js/arrow_position.js"></script>
 </body>
-</html>
+</html> 
