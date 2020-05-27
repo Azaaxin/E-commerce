@@ -1,0 +1,50 @@
+.regwrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px;
+}
+*{
+    margin: unset;
+}
+.contact h1{
+    padding: 0px 7px;
+}
+input, select{
+    height: 55px;
+    width: calc(100% - 28px);
+    border: 1px solid #808080;
+    background-color: #fff;
+    border-radius: 5px;
+    padding-left: 14px;
+    margin: 7px;
+}
+select{
+    width: calc(100% - 12px) !important;
+    background-color: #414141;
+    color: #fff;
+    height: 57px !important;
+}
+.butn{
+    width: calc(100% - 12px) !important;
+}
+.butn:hover{
+    background-color: #414141;
+    color: #fff;
+}
+.contact{
+    width: 100%;
+}
+@media only screen and (min-width: 960px) {
+    input, select{
+        width: 500px;
+        padding: 0px 13px;
+    }
+    select, .butn, .contact{
+        width: 528px !important;
+    }
+    *{
+        margin: 0px;
+    }
+  }

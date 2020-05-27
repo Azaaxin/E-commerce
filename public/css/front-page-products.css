@@ -1,0 +1,92 @@
+/* Written by Ludvig Olausson */
+html, body, ._procontainer { width: 100%; height:100%; margin: 0; }
+._procontainer * { 
+  position: relative;
+}
+.block_cont{display:block;}
+._procontainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "Item1 Item2" "Item4 Item5" "Item7 Item8" "Item3 Item6";
+}
+.brands {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "." "." "." "." "." ".";
+  grid-area: brands;
+  border: 1px solid #2e2e2e2b;
+  display:none;
+}
+.pointer {
+    display:none;
+}
+.Item1 { grid-area: Item1; }
+.Item2 { grid-area: Item2; }
+.Item3 { grid-area: Item3; }
+.Item4 { grid-area: Item4; }
+.Item5 { grid-area: Item5; }
+.Item6 { grid-area: Item6; }
+.Item7 { grid-area: Item7; }
+.Item8 { grid-area: Item8; }
+.Item9 { grid-area: Item9; 
+  display:none; 
+}
+.more {grid-area: more;}
+
+@media only screen and (min-width: 960px) {
+    ._procontainer {
+        display: grid;
+        grid-template-columns: 52px 254px 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 133px;
+        grid-template-areas: 
+        "pointer brands Item1 Item2 Item3" 
+        "pointer brands Item4 Item5 Item6" 
+        "pointer brands Item7 Item8 Item9" 
+        "pointer brands . . .";
+      }
+      .pointer {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-area: pointer;
+      }
+      .Item9{
+          display: flex;
+      }
+      .brands{
+          display:block;
+      }
+      .more{
+        display: block;
+        text-align: center;
+      }
+}
+/* FLEXBOX area  individual product*/
+.cont{
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin: auto;
+    margin: 30px 0px 30px 0px;
+  }
+  .brand_n{
+    padding: 10px;
+    font-size: 9.5px;
+    color: #6C6C6C;
+  }
+  .title{
+    padding: 10px 10px 15px;
+    font-size: 16px;
+  }
+  .prize{
+    padding: 10px;
+    font-size: 17px;
+    color: #6C6C6C;
+  }
+  .img_c {
+    display: flex;
+    justify-content: center;
+  }
+ 

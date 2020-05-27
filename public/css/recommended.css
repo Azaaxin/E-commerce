@@ -1,0 +1,27 @@
+/* Written by Ludvig Olausson */
+.reco_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "rec_item1 rec_item2" "rec_item4 rec_item5" "rec_item7 rec_item8" "rec_item6 rec_item3";
+  }
+  .rec_item1 { grid-area: rec_item1; }
+  .rec_item2 { grid-area: rec_item2; }
+  .rec_item3 { grid-area: rec_item3; }
+  .rec_item4 { grid-area: rec_item4; }
+  .rec_item5 { grid-area: rec_item5; }
+  .rec_item6 { grid-area: rec_item6; }
+  .rec_item7 { grid-area: rec_item7; }
+  .rec_item8 { grid-area: rec_item8; }
+  .rec_item9 { grid-area: rec_item9; display:none}
+  .more{display: none;}
+  @media only screen and (min-width: 960px) {
+    .reco_container {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 70px;
+        grid-template-areas: "rec_item1 rec_item2 rec_item3" "rec_item4 rec_item5 rec_item6" "rec_item7 rec_item8 rec_item9" ". more .";
+        margin: 30px 138px 30px 138px;
+      }
+      .rec_item9 { display:block}
+      .more{display:block;}
+  }

@@ -1,0 +1,31 @@
+/*Code written by Ludvig Olausson */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+.trapezoid, .trapezoid-rec span{
+  line-height: 1.7;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 29px;
+  color: #F4F4F4;
+}   
+.draw-container .trapezoid {
+  border-bottom: 51px solid #2A2A2A;
+  border-left: 0px solid transparent;
+  border-right: 35px solid transparent;
+  height: 0;
+  width: 156px;
+  text-align: center;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.draw-container .trapezoid-rec {
+  border-bottom: 51px solid #67539E;
+  border-left: 0px solid transparent;
+  border-right: 35px solid transparent;
+  height: 0;
+  width: 321px;
+  text-align: center;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.draw-container{
+  width: 100%;
+  background-color: #1E1E1E;
+}
