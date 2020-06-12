@@ -38,7 +38,7 @@
     <div class="sum_cart">Totalt: ‭403.992‬kr</div>
     <div class="checkout_knapp"><button class="button_cart" onClick="window.location.href='cart-page.php'">Till kassan</button></div>
     </div>
-    
+    <script src="js/spincore.min.js"></script>
 </div>
 </div>
 
@@ -48,11 +48,13 @@
             close();
         }else{
             document.getElementById("min-ca").style.display = "block";
+            $pin("#min-ca").cobweb("PlaceMeAt", "#basketAnchor")
         }
     }
     window.addEventListener('click', function(e){
         if (document.getElementById('min-ca').contains(e.target) || document.getElementById('b_m').contains(e.target)){
             document.getElementById("min-ca").style.display = "block";
+            $pin("#min-ca").cobweb("PlaceMeAt", "#basketAnchor")
         }
         else{
             close();
@@ -60,5 +62,6 @@
     });
     function close(){
         document.getElementById("min-ca").style.display = "none";
+        $pin("#min-ca").cobweb("PlaceMeAt", "#basketAnchor")
     }
 </script>
