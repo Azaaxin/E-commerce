@@ -22,7 +22,7 @@
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
           }
             session_start();
-            $_SESSION["successmsg"]='User deleted!';
+            $_SESSION["successmsg"]='Användare borttagen.';
             session_destroy();
             header('Location: index.php');
             exit;
@@ -30,11 +30,11 @@
         }
     }
     
-    $first_name  = '';
-    $last_name   = '';
-    $phone       = '';  
+    $firstname  = '';
+    $lastname   = '';
+    $mobile       = '';  
     $street      = '';
-    $postal_code = '';
+    $postalcode = '';
     $city        = '';
     $country     = '';
     $username    = '';
@@ -43,64 +43,64 @@
     $msg         = '';
     
     if (isset($_POST['signup'])) {
-        $username          = trim($_POST['username']);
-        $first_name        = trim($_POST['first_name']);
-        $last_name         = trim($_POST['last_name']);
-        $email             = trim($_POST['email']);
-        $password          = trim($_POST['password']);
-        $confirmPassword   = trim($_POST['confirmPassword']);
-        $phone             = trim($_POST['phone']);
-        $street            = trim($_POST['street']);
-        $postal_code       = trim($_POST['postal_code']);
-        $city              = trim($_POST['city']);
-        $country           = trim($_POST['country']);
+        $username          = trim($_POST['Username']);
+        $firstname        = trim($_POST['Firstname']);
+        $lastname         = trim($_POST['Lastname']);
+        $email            = trim($_POST['Email']);
+        $password          = trim($_POST['Password']);
+        $confirmPassword   = trim($_POST['ConfirmPass']);
+        $mobile            = trim($_POST['Mobile']);
+        $street            = trim($_POST['Street']);
+        $postcode          = trim($_POST['Postcode']);
+        $city              = trim($_POST['City']);
+        $country           = trim($_POST['Country']);
 
-        if (empty($first_name)) {
-            $error .= "<li>The first name is mandatory</li>";
+        if (empty($firstname)) {
+            $error .= "<li>Du MÅSTE ange ett Förnamn</li>";
         }
 
-        if (empty($last_name)) {
-            $error .= "<li>The last name is mandatory</li>";
+        if (empty($lastname)) {
+            $error .= "<li>Du MÅSTE ange ett Efternamn</li>";
         }
 
         if (empty($email)) {
-            $error .= "<li>The e-mail address is mandatory</li>";
+            $error .= "<li>Du MÅSTE ange en E-postadress</li>";
         }
 
         if (empty($password)) {
-            $error .= "<li>The password is mandatory</li>";
+            $error .= "<li>Du MÅSTE ange ett Lösenord</li>";
         }
 
-        if (empty($phone)) {
-            $error .= "<li>The phone is mandatory</li>";
+        if (empty($mobile)) {
+            $error .= "<li>Du MÅSTE ange ett Telefonnummer</li>";
         }
 
         if (empty($street)) {
-            $error .= "<li>The street is mandatory</li>";
+            $error .= "<li>Du MÅSTE ange en Gatuadress</li>";
         }
 
-        if (empty($postal_code)) {
-            $error .= "<li>The postal code is mandatory</li>";
+        if (empty($postcode)) {
+            $error .= "<li>Du MÅSTE ange ett Postnummer</li>";
         }
 
         if (empty($city)) {
-            $error .= "<li>The city is mandatory</li>";
+            $error .= "<li>Du MÅSTE ange din Stad</li>";
         }
 
         if (empty($country)) {
-            $error .= "<li>The country is mandatory</li>";
+            $error .= "<li>Du MÅSTE ange ditt Land</li>";
         }
 
         if (!empty($password) && strlen($password) < 6) {
-            $error .= "<li>The password cant be less than 6 characters</li>";
+            $error .= "<li>Lösenord måste vara längre än 6 tecken</li>";
         }
 
         if ($confirmPassword !== $password) {
-            $error .= "<li>The confirmed password doesnt match</li>";
+            $error .= "<li>Lösenorden matchar ej varandra</li>";
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $error .= "<li>Unvalid e-mail address</li>";
+            $error .= "<li>Felaktig mail-adress</li>";
         }
 
         if ($error) {
