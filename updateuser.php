@@ -1,9 +1,38 @@
-<?php
 
 
-    require('../src/config.php');
+<?php 
+    require('../../src/config.php');
+    
+    checkLoginSession();
 
-    include('layout/header.php');
+    require('../../src/dbconnect.php');
+
+  
+    if (isset($_POST['deleteBtn'])) {
+ 
+        if(empty($users)){
+            try {
+                $query = "
+                DELETE FROM users
+                WHERE id = :id;
+                ";
+      
+                $stmt = $dbconnect->prepare($query);
+                $stmt->bindValue(':id', $_POST['id']);
+                $result = $stmt->execute();
+          }     catch (\PDOException $e) {
+                throw new \PDOException($e->getMessage(), (int) $e->getCode());
+          }
+            session_start();
+            $_SESSION["successmsg"]='Användare raderad';
+            session_destroy();
+            header('Location: index.php');
+            exit;
+
+        }
+    }
+
+
 
     $pageTitle = "REGISTRERING";
     $pageId = "";
@@ -56,7 +85,7 @@
             $error .= "<li>Du MÅSTE ange ett LAND</li>";
         }
         if (!empty($password) && strlen($password) < 6) {
-            $error .= "<li>Lösenordet MÅSTE vara längre än 6 tecken</li>";
+            $error .= "<li>Lösenordet MÅSTE vara längre än 6 tecken (och helst ej Jordan ;) )</li>";
         }
         if ($confirmPass !== $password) {
             $error .= "<li>Lösenordet STÄMMER EJ överrens</li>";
@@ -108,7 +137,7 @@
         <article class="border">
             <form method="POST" action="#">
                 <fieldset>
-                    <legend>Registrera dig för att kunna köpa skor</legend>
+                    <legend>Registrera dig för att kunna köpa de skor du vill ha!</legend>
                     
                     
                     <?=$msg?>
