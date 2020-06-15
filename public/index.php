@@ -1,4 +1,10 @@
-<!--- All included code is written by Ludvig Olausson --->
+
+<?php
+require('../src/config.php');
+require(SRC_PATH . 'dbconnect.php');
+include('functions.php');
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +18,7 @@
     <link rel="stylesheet" href="css/front-page-products.css">
     <link rel="stylesheet" href="css/recommended.css">
     <script src="js/phone_menu.js"></script>
+    <script src="js/Ajax.call.js"></script>
     <style>#arrow_y{transition: .5s; margin: 0 auto;}</style>
 </head>
 <body>
@@ -21,6 +28,7 @@
     include "layout/front-page/slider.php";
     include "layout/front-page/bar.php";
     include "layout/front-page/front-page-products.php";
+    //echo writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "1");
     include "layout/front-page/bar-rec.php";
     include "layout/front-page/recommended.php";
     include "layout/footer.php";
