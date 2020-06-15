@@ -1,9 +1,9 @@
 <?php
 
-$host 	  = 'mysql686.loopia.se';
-$database = 'ludvigolausson_se';
-$user     = 'ecom@l276199';
-$password = 'cmeducations19';
+$host 	  = 'localhost';
+$database = 'webshop';
+$user     = 'root';
+$password = "";
 $charset  = 'utf8mb4';
 
 $dns 	  = "mysql:host={$host};dbname={$database};charset={$charset}";
