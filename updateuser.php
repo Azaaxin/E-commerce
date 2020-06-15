@@ -1,234 +1,176 @@
-<?php 
-    require('../../src/config.php');
-    
-    checkLoginSession();
+<?php
 
-    require('../../src/dbconnect.php');
 
-    // $msg       = '';
-    if (isset($_POST['deleteBtn'])) {
- 
-        if(empty($users)){
-            try {
-                $query = "
-                DELETE FROM users
-                WHERE id = :id;
-                ";
-      
-                $stmt = $dbconnect->prepare($query);
-                $stmt->bindValue(':id', $_POST['id']);
-                $result = $stmt->execute();
-          }     catch (\PDOException $e) {
-                throw new \PDOException($e->getMessage(), (int) $e->getCode());
-          }
-            session_start();
-            $_SESSION["successmsg"]='Användare borttagen.';
-            session_destroy();
-            header('Location: index.php');
-            exit;
+    require('../src/config.php');
 
-        }
-    }
-    
-    $firstname  = '';
-    $lastname   = '';
-    $mobile       = '';  
-    $street      = '';
-    $postalcode = '';
-    $city        = '';
-    $country     = '';
-    $username    = '';
-    $email       = '';
-    $error       = '';
-    $msg         = '';
-    
-    if (isset($_POST['signup'])) {
-        $username          = trim($_POST['Username']);
-        $firstname        = trim($_POST['Firstname']);
-        $lastname         = trim($_POST['Lastname']);
-        $email            = trim($_POST['Email']);
-        $password          = trim($_POST['Password']);
-        $confirmPassword   = trim($_POST['ConfirmPass']);
-        $mobile            = trim($_POST['Mobile']);
-        $street            = trim($_POST['Street']);
-        $postcode          = trim($_POST['Postcode']);
-        $city              = trim($_POST['City']);
-        $country           = trim($_POST['Country']);
+    include('layout/header.php');
+
+    $pageTitle = "REGISTRERING";
+    $pageId = "";
+
+
+    $firstname      = '';
+    $lastname       = '';
+    $mail           = '';
+    $mobile           = '';
+    $street          = '';
+    $postalcode     = '';
+    $city            = '';
+    $country         = '';
+    $error           = '';
+    $msg             = '';
+    if (isset($_POST['register'])) {
+        $firstname        = trim($_POST['firstname']);
+        $lastname         = trim($_POST['lastname']);
+        $mail             = trim($_POST['mail']);
+        $password          = trim($_POST['password']);
+        $confirmPass        = trim($_POST['confirmPass']);
+        $mobile            = trim($_POST['mobile']);
+        $street            = trim($_POST['street']);
+        $postalcode       = trim($_POST['postalcode']);
+        $city              = trim($_POST['city']);
+        $country           = trim($_POST['country']);
 
         if (empty($firstname)) {
-            $error .= "<li>Du MÅSTE ange ett Förnamn</li>";
+            $error .= "<li>Du MÅSTE ange ett FÖRNAMN</li>";
         }
-
         if (empty($lastname)) {
-            $error .= "<li>Du MÅSTE ange ett Efternamn</li>";
+            $error .= "<li>Du MÅSTE ange ett EFTERNAMN</li>";
         }
-
-        if (empty($email)) {
-            $error .= "<li>Du MÅSTE ange en E-postadress</li>";
+        if (empty($mail)) {
+            $error .= "<li>Du MÅSTE ange en MAILADRESS</li>";
         }
-
-        if (empty($password)) {
-            $error .= "<li>Du MÅSTE ange ett Lösenord</li>";
-        }
-
         if (empty($mobile)) {
-            $error .= "<li>Du MÅSTE ange ett Telefonnummer</li>";
+            $error .= "<li>Du MÅSTE ange ett MOBILNUMMER</li>";
         }
-
         if (empty($street)) {
-            $error .= "<li>Du MÅSTE ange en Gatuadress</li>";
+            $error .= "<li>Du MÅSTE ange en ADRESS</li>";
         }
-
-        if (empty($postcode)) {
-            $error .= "<li>Du MÅSTE ange ett Postnummer</li>";
+        if (empty($postalcode)) {
+            $error .= "<li>Du MÅSTE ange ett POSTNUMMER</li>";
         }
-
         if (empty($city)) {
-            $error .= "<li>Du MÅSTE ange din Stad</li>";
+            $error .= "<li>Du MÅSTE ange en STAD</li>";
         }
-
         if (empty($country)) {
-            $error .= "<li>Du MÅSTE ange ditt Land</li>";
+            $error .= "<li>Du MÅSTE ange ett LAND</li>";
         }
-
         if (!empty($password) && strlen($password) < 6) {
-            $error .= "<li>Lösenord måste vara längre än 6 tecken</li>";
+            $error .= "<li>Lösenordet MÅSTE vara längre än 6 tecken</li>";
         }
-
-        if ($confirmPassword !== $password) {
-            $error .= "<li>Lösenorden matchar ej varandra</li>";
+        if ($confirmPass !== $password) {
+            $error .= "<li>Lösenordet STÄMMER EJ överrens</li>";
         }
-
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $error .= "<li>Felaktig mail-adress</li>";
+            $error .= "<li>Mailadressen är OGILTIG</li>";
         }
+        
 
         if ($error) {
             $msg = "<ul class='error_msg'>{$error}</ul>";
         }
 
-        try {
-            $query = "
-            UPDATE users
-            SET username = :username, password = :password, email = :email, phone = :phone, street = :street, postal_code = :postal_code, city = :city, country = :country, first_name = :first_name, last_name = :last_name 
-            WHERE id = :id
-            ";
-            	 $stmt = $dbconnect->prepare($query);
-                 $stmt->bindValue(':username', $username);
-                 $stmt->bindValue(':password', $password);
-                 $stmt->bindValue(':email', $email);
-                 $stmt->bindValue(':phone', $phone);
-                 $stmt->bindValue(':street', $street);
-                 $stmt->bindValue(':postal_code', $postal_code);
-                 $stmt->bindValue(':city', $city);
-                 $stmt->bindValue(':country', $country);
-                 $stmt->bindValue(':first_name', $first_name);
-                 $stmt->bindValue(':last_name', $last_name);
-                 $stmt->bindValue(':id', $_GET['id']);
-                 $result = $stmt->execute();
-            }   catch(\PDOException $e) {
-                    throw new \PDOException($e->getMessage(), (int) $e->getCode());
-                }
-            if ($result) {
-                $msg = '<div class="success">User updated</div>';
-                } 
-    }
+        if (empty($error)) {
+            try {
+                $query = "
+                    INSERT INTO users ( firstname, lastname, password, mail, mobile, street, postalcode, city, country)
+                    VALUES ( :firstname, :lastname, :password, :mail, :mobile, :street, :postalcode, :city, :country);
+                ";
 
-    $account = fetchUserById($_GET['id']); //refakturerad
+                $stmt = $dbconnect->prepare($query);
+                $stmt->bindValue(':firstname', $firstname);
+                $stmt->bindValue(':lastname', $lastname);
+                $stmt->bindValue(':password', $password);
+                $stmt->bindValue(':mail', $mail);
+                $stmt->bindValue(':mobile', $mobile);
+                $stmt->bindValue(':street', $street);
+                $stmt->bindValue(':postalcode', $postalcode);
+                $stmt->bindValue(':city', $city);
+                $stmt->bindValue(':country', $country);
+                $result = $stmt->execute(); 
+            } catch(\PDOException $e) {
+                throw new \PDOException($e->getMessage(), (int) $e->getCode());
+            }
+
+            if ($result) {
+                $msg = '<div class="success_msg">Gratulerar. Ditt konto är skapat. Nu kan du köpa de skor du vill ha!</div>';
+            } else {
+                $msg = '<div class="error_msg">Tyvärr misslyckades registering av nån anledning. Försök igen för att kunna köpa just den skon du vill ha</div>';
+            }
+        }
+    }
 
 ?>
 
-    <form action="admin.php">
-        <button class="contentBtn">Back</button>
-    </form>
 
-    <div id="form"> 
-        <form action="#" method="POST">       
-        
-            <!-- Visa errormeddelanden -->
-            <?=$msg?>
-            
-            <h1>Update user</h1>
-            <p>
-                <label for="input1">Username:</label> <br>
-                <input type="text" class="text" name="username" value="<?=htmlentities($account['username'])?>">
-            </p>
+ 
+    <div id="content">
+        <article class="border">
+            <form method="POST" action="#">
+                <fieldset>
+                    <legend>Registrera dig för att kunna köpa skor</legend>
+                    
+                    
+                    <?=$msg?>
+                    
+                    <p>
+                        <label for="input1">Ditt Förnamn:</label> <br>
+                        <input type="text" class="text" name="firstname" value="<?=htmlentities($firstname)?>">
+                    </p>
 
-            <p>
-                <label for="input1">E-mail address:</label> <br>
-                <input type="texter" class="texter" name="email" value="<?=htmlentities($account['email'])?>">
-            </p>
+                    <p>
+                        <label for="input1">Ditt Efternamn:</label> <br>
+                        <input type="text" class="text" name="lastname" value="<?=htmlentities($lastname)?>">
+                    </p>
 
-            <p>
-                <label for="input1">Password:</label> <br>
-                <input type="password" class="text" name="password" value="<?=htmlentities($account['password'])?>"
-                >
-            </p>
+                    <p>
+                        <label for="input1">Din M@iladress:</label> <br>
+                        <input type="text" class="text" name="mail" value="<?=htmlentities($mail)?>">
+                    </p>
 
-            <p>
-                <label for="input2">Confirm password:</label> <br>
-                <input type="password" class="text" name="confirmPassword" value="<?=htmlentities($account['password'])?>">
-            </p>
-            
-            <p>
-                <label for="input3">First name:</label> <br>
-                <input type="text" class="text" name="first_name" value="<?=htmlentities($account['first_name'])?>">
-            </p>
-            
-            <p>
-                <label for="input4">Last name:</label> <br>
-                <input type="text" class="text" name="last_name" value="<?=htmlentities($account['last_name'])?>">
-            </p>
-            <p>
-                <label for="input5">Phone:</label> <br>
-                <input type="text" class="text" name="phone" value="<?=htmlentities($account['phone'])?>">
-            </p>  
-            <p>
-                <label for="input6">Street:</label> <br>
-                <input type="text" class="text" name="street" value="<?=htmlentities($account['street'])?>">     
-            </p>
+                    <p>
+                        <label for="input1">Ditt Lösenord (Fler än 6 tecken och ej Jordan :)):</label> <br>
+                        <input type="password" class="text" name="password" value="<?=htmlentities($password)?>">
+                    </p>
 
-            <p>
-                <label for="input7">City</label> <br>
-                <input type="text" class="text" name="city" value="<?=htmlentities($account['city'])?>">
-            </p>  
+                    <p>
+                        <label for="input1">Bekräfta ditt Lösenord (Fler än 6 tecken):</label> <br>
+                        <input type="password" class="text" name="confirmPass" value="<?=htmlentities($confirmPass)?>">
+                    </p>
 
-            <p>
-                <label for="input8">Postal code</label> <br>
-                <input type="text" class="text" name="postal_code" value="<?=htmlentities($account['postal_code'])?>">
-            </p>
+                    <p>
+                        <label for="input2">Ditt Mobilnummer:</label> <br>
+                        <input type="text" class="text" name="mobile" value="<?=htmlentities($mobile)?>">
+                    </p>
 
-            <?php
-            $countries = [
-                'trump' => 'Trumpnation',
-                'norway' => 'Norway',
-                'denmark' => 'Denmark',
-                'finland' => 'Finland',
-                'sweden' => 'Sweden',
-            ];
-            ?>
+                    <p>
+                        <label for="input1">Din Gatuadress:</label> <br>
+                        <input type="text" class="text" name="street" value="<?=htmlentities($street)?>">
+                    </p>
 
-            <label for="country">Country</label>
-            <select id="country" name="country">
-                <?php foreach ($countries as $countryKey => $countryName) { ?> 
-                   <?php if ($konto['country'] == $countryKey){ ?>
-                        <option selected value="<?=$countryKey?>"> <?=$countryName?></option> 
-                   <?php } else { ?>
-                        <option value="<?=$countryKey?>"> <?=$countryName?></option>
-                 <?php   } ?>
-                <?php }  ?>
-            </select>
-            
-            <p>
-                <input action="users.php?" type="submit" name="signup" value="Uppdatera">
-            </p>
-            
-            <form action="index.php?" method="POST">
-                <input type="hidden" name="id" value="<?=$_SESSION['id']?>">
-                <input type="submit" name="deleteBtn" value="Delete user">
+                    <p>
+                        <label for="input1">Ditt Postnummer:</label> <br>
+                        <input type="text" class="text" name="postalcode" value="<?=htmlentities($postalcode)?>">
+                    </p>
+
+                    <p>
+                        <label for="input1">Din Stad du går omkring med dina skor i:</label> <br>
+                        <input type="text" class="text" name="city" value="<?=htmlentities($city)?>">
+                    </p>
+
+                    <p>
+                        <label for="input1">Ditt Land du går omkring med dina skor i:</label> <br>
+                        <input type="text" class="text" name="country" value="<?=htmlentities($country)?>">
+                    </p>
+
+                    <p>
+                        <input type="submit" name="register" value="Registrera">
+                    </p>
+                </fieldset>
             </form>
-           
-        </form>
+        
+            <hr>
+        </article>
     </div>
-    
+
 <?php include('layout/footer.php'); ?>
