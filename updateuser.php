@@ -202,4 +202,22 @@
         </article>
     </div>
 
+
+
+
+            <p>
+                <input action="users.php?" type="submit" name="signup" value="Uppdatera">
+            </p>
+            
+            <form action="index.php?" method="POST">
+                <input type="hidden" name="id" value="<?=$_SESSION['id']?>">
+                <input type="submit" name="deleteBtn" value="Ta bort andvändare">
+            </form>
+           
+        </form>
+    </div>
+    
 <?php include('layout/footer.php'); ?>
+
+
+
