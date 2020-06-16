@@ -211,7 +211,7 @@
             
             <form action="index.php?" method="POST">
                 <input type="hidden" name="id" value="<?=$_SESSION['id']?>">
-                <input type="submit" name="deleteBtn" value="Ta bort andvändare">
+                <input type="submit" name="deleteBtn" value="Ta bort användaren">
             </form>
            
         </form>
