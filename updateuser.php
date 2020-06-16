@@ -215,7 +215,7 @@
             </form>
            
         </form>
-    </div>
+    </div> 
     
 <?php include('layout/footer.php'); ?>
 
