@@ -14,8 +14,8 @@ a {text-decoration: none;color:#000;font-size: 22.56px;line-height: 26px;}
     height: 82px;
 }
 .Logo { 
-    grid-area: Logo; 
-    margin: 28px 20px;
+    grid-area: Logo;
+    margin: 13px 49px;
     cursor: pointer;
 } 
 .Basket { 
@@ -53,9 +53,9 @@ a {text-decoration: none;color:#000;font-size: 22.56px;line-height: 26px;}
     margin: 12px 20px;
 }
 .container > div:nth-child(1) {
-    background: url(../img/Trailstop.svg);
-    width: 182px;
-    height: 25px;
+    background: url(../img/4.svg);
+    width: 58px;
+    height: 53px;
     background-repeat: no-repeat;
 }
 .container > div:nth-child(2) {

@@ -4,8 +4,7 @@ function front_page_ajax(){
 
                 let req = response;
               //  $.each(req, function(index) {
-                    for(let index=0; index<9; index++){
-                    console.log(index);
+                    for(let index=0; index<12; index++){
                     var t = $("<div class=Item>" +
                     "<div class='cont' onclick='window.location.href=\'product-page.php\''>" +
                     "<div class='img_c'><img src='" + req[index].img_url + "' width='20%'></div>" +
@@ -14,11 +13,9 @@ function front_page_ajax(){
                     "<div class='prize'>"+ req[index].price +"kr</div></div></div>");
                     $("._procontainer").append(t);
                   };
-                
             },
             'json'
         ).fail(function() {
-                console.log('Try removing the spaces and special characters.'); // or whatever
             
         });
 }

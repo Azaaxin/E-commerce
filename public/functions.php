@@ -3,8 +3,6 @@
     //require(SRC_PATH . 'dbconnect.php');
     error_reporting(0);
 
-
-
     function writeProd($conn, $select, $from, $where) {
         $sth = $conn->prepare("SELECT $select FROM $from WHERE $where");
         
@@ -20,5 +18,7 @@
     if($_GET['data'] == "main_prod"){
         echo writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "1");
     }
-    
+
+
 ?>
+

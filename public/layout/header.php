@@ -4,7 +4,7 @@
     <div class="Logo" onClick="window.location.href='index.php'"></div>
     <div class="Menu">
     <ul>
-        <li><a href="category-page.php">Cyklar</a></li>
+        <li><a href="category-page.php">Handla</a></li>
         <li><a href="reparation-page.php">Service</a></li>
         <li><a href="contact-page.php">Kontakta oss</a></li>
     </ul>
