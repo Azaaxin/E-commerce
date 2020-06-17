@@ -55,7 +55,7 @@
         <article class="border">
             <form method="POST" action="#">
                 <fieldset>
-                    <legend>Logga in i shopen</legend>
+                    <legend>Logga in i 4 shopen</legend>
                     
                    
                     <?=$msg?>
