@@ -17,11 +17,14 @@
   .more{display: none;}
   @media only screen and (min-width: 960px) {
     .reco_container {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 70px;
-        grid-template-areas: "rec_item1 rec_item2 rec_item3" "rec_item4 rec_item5 rec_item6" "rec_item7 rec_item8 rec_item9" ". more .";
-        margin: 30px 138px 30px 138px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 70px;
+      grid-template-areas:
+          "rec_item1 rec_item2 rec_item3 rec_item7 "
+          "rec_item4 rec_item5 rec_item6 rec_item8"
+          "more more more more";
+          margin: 30px 153px 30px 153px;
       }
-      .rec_item9 { display:block}
+      .rec_item9 { display:none}
       .more{display:block;}
   }
