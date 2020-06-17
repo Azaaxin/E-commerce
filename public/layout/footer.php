@@ -19,7 +19,7 @@
     <div class="about">
         <h5>Om Oss</h5>
         <div>
-            <a href="#">Om Trailstop</a><br>
+            <a href="#">Om FYRA</a><br>
             <a href="#">Jobba hos oss</a><br>
             <a href="#">Villkor</a><br>
             <a href="brands-page.php">Varumärken</a>
