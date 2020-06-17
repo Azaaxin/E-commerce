@@ -20,5 +20,24 @@ function showCoords(event) {
         let position = info + testDiv.offsetTop - arrowcenter;
         document.getElementById("arrow_y").style.transform = "translateY("+position+"px)";
     });
+    $(".arrowable").click(function(){
+      $("._procontainer .Item").fadeOut(300, function() { $(this).remove(); });
+      loadBrandArticles(this.id);
+  });
 
   });
+
+
+  function loadBrandArticles(brandid){
+    if(brandid == "brand1"){ // apple
+      brandsAjaxProducts("apple");
+    }else if(brandid == "brand2"){
+      brandsAjaxProducts("samsung");
+    }else if(brandid == "brand3"){
+      brandsAjaxProducts("huawei");
+    }else if(brandid == "brand4"){
+      brandsAjaxProducts("oneplus");
+    }else if(brandid == "brand5"){
+      brandsAjaxProducts("sony");
+    }
+  }
