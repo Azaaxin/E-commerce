@@ -6,14 +6,14 @@
       <div class="branding">
         <?php 
     $brand_list= array(
-        1    => "img/logotypes/scott.png",
-        2    => "img/logotypes/trek.png",
-        3    => "img/logotypes/yeti.png",
-        4    => "img/logotypes/rockymountain.png",
-        5    => "img/logotypes/specialized.png",
+        1    => "img/logotypes/apple.png",
+        2    => "img/logotypes/samsung.png",
+        3    => "img/logotypes/huawei.png",
+        4    => "img/logotypes/oneplus.png",
+        5    => "img/logotypes/sonypng.png",
     );
   for($brand = 1 ;$brand <= count($brand_list); $brand++){
-    echo '<div id="brand' . $brand . '">
+    echo '<div class="arrowable" id="brand' . $brand . '">
         <img src="' . $brand_list[$brand] . '" width="100%">
     </div>';
   }
