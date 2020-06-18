@@ -1,5 +1,5 @@
 function front_page_ajax(){
-    let baseUrl = 'http://localhost/E-commerce/public/functions.php';
+    let baseUrl = '../public/functions.php';
     $.get(baseUrl + '?data=' + "main_prod", function(response) {
 
                 let req = response;
@@ -20,7 +20,7 @@ function front_page_ajax(){
         });
 }
 function reco_front_page_ajax(){
-  let baseUrl = 'http://localhost/E-commerce/public/functions.php';
+  let baseUrl = '../public/functions.php';
   $.get(baseUrl + '?data=' + "rec_prod", function(response) {
 
               let req = response;
@@ -46,7 +46,7 @@ function reco_front_page_ajax(){
 }
 function brandsAjaxProducts(filter){
   //$( "._procontainer .Item" ).hide();
-  let baseUrl = 'http://localhost/E-commerce/public/functions.php';
+  let baseUrl = '../public/functions.php';
   $.get(baseUrl + '?data=' + "front_brand" + "&filter=" + filter, function(response) {
 
               let req = response;
