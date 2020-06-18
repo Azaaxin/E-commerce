@@ -27,7 +27,6 @@ function showCoords(event) {
 
   });
 
-
   function loadBrandArticles(brandid){
     if(brandid == "brand1"){ // apple
       brandsAjaxProducts("apple");

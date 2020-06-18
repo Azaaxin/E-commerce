@@ -1,6 +1,5 @@
 <?php
     require('../src/dbconnect.php');
-    //require(SRC_PATH . 'dbconnect.php');
     error_reporting(1);
 
     function writeProd($conn, $select, $from, $where, $like, $like2, $like3) {
@@ -30,5 +29,6 @@
     }
 
 //SELECT `id`,`title`,`description`,`price`,`img_url` FROM `products` WHERE `title` LIKE '%oneplus%' OR NULL OR NULL
+
 ?>
 
