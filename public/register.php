@@ -18,7 +18,7 @@
   <div class="contact">
   <h1>Registrera dig hos oss</h1>
       <div class="select">
-        <form action"">
+        <form method="POST" action"#">
       <select required>
         <option value="">Välj land</option>
         <option value="1">Sverige</option>
