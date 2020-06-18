@@ -1,9 +1,9 @@
 <?php 
-    require('../../src/config.php');
+    require('src/config.php');
     
-    checkLoginSession();
+    //checkLoginSession();
 
-    require('../../src/dbconnect.php');
+    require('src/dbconnect.php');
 
   
     if (isset($_POST['deleteBtn'])) {
@@ -49,7 +49,7 @@
     if (isset($_POST['register'])) {
         $firstname        = trim($_POST['firstname']);
         $lastname         = trim($_POST['lastname']);
-        $mail             = trim($_POST['mail']);
+        $email             = trim($_POST['mail']);
         $password          = trim($_POST['password']);
         $confirmPass        = trim($_POST['confirmPass']);
         $mobile            = trim($_POST['mobile']);
@@ -64,7 +64,7 @@
         if (empty($lastname)) {
             $error .= "<li>Du MÅSTE ange ett EFTERNAMN</li>";
         }
-        if (empty($mail)) {
+        if (empty($email)) {
             $error .= "<li>Du MÅSTE ange en MAILADRESS</li>";
         }
         if (empty($mobile)) {
@@ -100,18 +100,18 @@
         if (empty($error)) {
             try {
                 $query = "
-                    INSERT INTO users ( firstname, lastname, password, mail, mobile, street, postalcode, city, country)
-                    VALUES ( :firstname, :lastname, :password, :mail, :mobile, :street, :postalcode, :city, :country);
+                    INSERT INTO users ( `first_name`, `last_name`, `password`, `email`, `phone`, `street`, `postal_code`, `city`, `country`)
+                    VALUES ( :first_name, :last_name, :password, :mail, :phone, :street, :postal_code, :city, :country);
                 ";
 
                 $stmt = $dbconnect->prepare($query);
-                $stmt->bindValue(':firstname', $firstname);
-                $stmt->bindValue(':lastname', $lastname);
+                $stmt->bindValue(':first_name', $firstname);
+                $stmt->bindValue(':last_name', $lastname);
                 $stmt->bindValue(':password', $password);
-                $stmt->bindValue(':mail', $mail);
-                $stmt->bindValue(':mobile', $mobile);
+                $stmt->bindValue(':mail', $email);
+                $stmt->bindValue(':phone', $mobile);
                 $stmt->bindValue(':street', $street);
-                $stmt->bindValue(':postalcode', $postalcode);
+                $stmt->bindValue(':postal_code', $postalcode);
                 $stmt->bindValue(':city', $city);
                 $stmt->bindValue(':country', $country);
                 $result = $stmt->execute(); 
@@ -119,8 +119,6 @@
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
             }
 
-
-            $result = registerUser($userData);
 
             if ($result) {
                 $msg = '<div class="success_msg">Gratulerar. Ditt konto är skapat. Nu kan du köpa de skor du vill ha!</div>';

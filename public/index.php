@@ -28,7 +28,6 @@ include('functions.php');
     include "layout/front-page/slider.php";
     include "layout/front-page/bar.php";
     include "layout/front-page/front-page-products.php";
-    //echo writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "1");
     include "layout/front-page/bar-rec.php";
     include "layout/front-page/recommended.php";
     include "layout/footer.php";

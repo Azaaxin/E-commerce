@@ -1,8 +1,8 @@
 <?php
 
     
-	require('../src/config.php');
-    include('layout/header.php');
+	require('src/config.php');
+ //   include('public/layout/header.php');
 
 
     $pageTitle = "Login";
@@ -24,7 +24,7 @@
         try {
             $query = "
                 SELECT * FROM users
-                WHERE mail = :mail;
+                WHERE email = :mail;
             ";
 
             $stmt = $dbconnect->prepare($query);
@@ -36,11 +36,11 @@
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int) $e->getCode());
         }
+            echo $user['email'];
 
-
-        if ($user && $password === $user['password']) {
-
-            $_SESSION['mail'] = $user['mail'];
+        if ($mail === $user['email'] && $password === $user['password']) {
+            echo  "logged in";
+            $_SESSION['mail'] = $user['mail'];  
             header('Location: mypage.php');
 
             exit;
@@ -49,8 +49,8 @@
             $msg = '<div class="error_message">Något blev FEL. FÖRSÖK igen.</div>';
         }
     }
+}
 ?>
-
     <div id="content">
         <article class="border">
             <form method="POST" action="#">
@@ -79,5 +79,3 @@
             <hr>
         </article>
     </div>
-
-<?php include('layout/footer.php'); ?>
