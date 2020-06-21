@@ -24,7 +24,12 @@
     <div class="pointer"><img id="arrow_y" src="img/doublearrow.svg" alt="Arrow" width="32"></div>
     <!--- Products looper ---->
 
-    <script>front_page_ajax();</script>
+    <script>
+    front_page_ajax();
+    $(document).on("click", ".cont" , function() {
+      window.location = "product-page.php?id=" + this.id;
+    });
+    </script>
 
   </div>
 </div>

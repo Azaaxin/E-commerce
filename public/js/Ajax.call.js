@@ -6,7 +6,7 @@ function front_page_ajax(){
               //  $.each(req, function(index) {
                     for(let index=0; index<12; index++){
                     var t = $("<div class=Item>" +
-                    "<div class='cont' onclick='window.location.href=\'product-page.php\''>" +
+                    "<div id='"+ req[index].id +"' class='cont'>" +
                     "<div class='img_c'><img src='" + req[index].img_url + "' width='30%'></div>" +
                     "<div class='brand_n'>Brand</div>" +
                     "<div class='title'>"+ req[index].title +"</div>" +
@@ -26,9 +26,8 @@ function reco_front_page_ajax(){
               let req = response;
             //  $.each(req, function(index) {
                   for(let index=0; index<9; index++){
-
                     var t= $("<div class='Item rec_item"+index+"'>" +
-                      "<div class='cont' onclick='window.location.href=product-page.php'>" +
+                      "<div id='"+ req[index].id +"' class='cont'>" +
                       "<div class='img_c'><img src='"+req[index].img_url+"' width='30%'></div>" +
                       "<div class='brand_n'>Brand</div>" +
                       "<div class='title'>"+req[index].title+"</div>" +
@@ -52,8 +51,9 @@ function brandsAjaxProducts(filter){
               let req = response;
             //  $.each(req, function(index) {
                   for(let index=0; index<12; index++){
+                    let produrl = "location.href='product-page.php?id='";
                   var t = $("<div class=Item>" +
-                  "<div class='cont' onclick='window.location.href=\'product-page.php\''>" +
+                  "<div id='"+ req[index].id +"' class='cont'>" +
                   "<div class='img_c'><img src='" + req[index].img_url + "' width='30%'></div>" +
                   "<div class='brand_n'>Brand</div>" +
                   "<div class='title'>"+ req[index].title +"</div>" +
@@ -66,3 +66,24 @@ function brandsAjaxProducts(filter){
           
       });
 }
+function productPage(filter){
+  //$( "._procontainer .Item" ).hide();
+  let baseUrl = '../public/functions.php';
+  $.get(baseUrl + '?data=' + "prod" + "&id=" + filter, function(response) {
+
+              let req = response[0];
+            //  $.each(req, function(index) {
+                   $(".image").append("<img src='"+ req.img_url +"' alt='' srcset=''>");
+                   $(".title").append(req.title);
+                   $(".desc").append(req.description);
+                   $(".price").append(req.price+"kr");
+                   $(".buyButton").append("<button class='buyBtn'>Lägg i varukorgen</button>");
+                
+          },
+          'json'
+      ).fail(function() {
+          
+      });
+}
+
+

@@ -1,114 +1,97 @@
-* {box-sizing: border-box;}
+html, body, .grid-container { margin: 0; }
 
-body {
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "sidebar_left shop shop shop sidebar_right" "sidebar_left shop shop shop sidebar_right" "sidebar_left shop shop shop sidebar_right";
+}
+
+.shop {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* grid-template-rows: 50px minmax(178px,0px) 25% 1fr; */
+  /* grid-template-rows: 50px minmax(196px,0px) 25% 1fr; */
+  gap: 1px 1px;
+  grid-template-areas:
+      "title title title title"
+      "image image buy buy"
+      "image image buy buy"
+      "desc desc desc desc"
+      "optional_area optional_area optional_area optional_area";
+  grid-area: shop;
+}
+
+.title {
+  grid-area: title;
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  align-items: center;
+  margin: 15px;
 }
 
-footer {
-  width: 100vw;
-  align-self: flex-end;
-}
-
-.product-display-container {
-  flex: 1 0 auto;
-  display: grid;
-  grid-template-rows: auto auto auto;
-  grid-template-columns: 100%;
-  color: #fff;
-}
-
-.cart {
-  width: 100%;
-  text-align: center;
-  background-color: #67539E;
-  color: white;
-  padding: 5px; 
-}
-
-.product-display-container .images {
-  display: grid;
-  width: 80%;
-  margin: auto;
-  grid-template-columns: repeat(2, 1fr) 20%;
-  grid-template-rows: 100%;
-  padding-bottom: 20px;
-  margin-top: 20px;
-}
-
-.product-display-container .images .product {
-  width: 100%;
-  grid-column: 1 / span 2;
-  z-index: -1;
-}
-
-.product-display-container .images .brand {
-  width: 100%;
-  grid-column: 3 / span 1;
-}
-
-.product-display-container .info {
-  display: grid;
-  grid-template-columns: 70% 30%;
-  color: #fff;
-  width: 100%;
-
-}
-.product-display-container .info .product-name {
-  background-color: #67539E;
-  padding: 5px;
-  height: 100%;
-}
-
-.product-display-container .info .price {
-  background-color: #000000;
-  text-align: center;
-  padding: 5px;
-}
-
-.specifications {
-  margin: 20px auto;
+.image { 
+  grid-area: image;
   display: flex;
-  width: 80%;
-  flex-wrap: wrap;
-  color: #2e2e2e;
-  height: auto;
+  justify-content: center;
+  /* min-width: 176px; */
+  min-height: 340px;
+  /* max-width: 270px; */
+  /* max-height: 540px;*/
+}
+.image img{
+ /* height: 100%; */
+  max-height: 340px;
+  object-fit: cover;
 }
 
-.specifications div {width: 100%;}
-.specifications p {
-  font-size: 14px;
-  margin-bottom: 10px;
+.buy {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "price price buy_misc" "buyButton buyButton count" "buyButton_misc buyButton_misc buyButton_misc";
+  grid-area: buy;
 }
 
-@media only screen and (min-width: 1000px) {
-
-  .product-display-container .images {width: 100%;}
-
-  .product-display-container .info .product-name {
-    padding: 10px 0;
-    font-size: 24px;
-    text-align: center;
-  }
-
-  .product-display-container .info .price, .cart {
-    padding: 10px;
-    font-size: 24px;
-  }
-
-  .specifications div {
-    padding: 5px;
-    width: 50%;
-  }
-
-  .specifications h2 {
-    width: 100%;
-    font-size: 26px;
-  }
-
-  .specifications h3 {font-size: 20px;}
-  .specifications p {font-size: 16px;}
-  .specifications .frame {width: 100%;}
-  
+.buyButton {
+  grid-area: buyButton;
 }
+.buyBtn {
+  width: 57%;
+  height: 49%;
+  background: #01c355;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  min-width: 216px;
+  max-height: 50px;
+}
+.count { grid-area: count; }
+
+.price {
+  grid-area: price;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.buy_misc { grid-area: buy_misc; }
+
+.buyButton_misc { grid-area: buyButton_misc; }
+
+.desc {
+  grid-area: desc;
+  padding: 34px 0px;
+  min-height: 300px;
+}
+
+.optional_area { grid-area: optional_area; }
+
+.sidebar_left { grid-area: sidebar_left; }
+
+.sidebar_right { grid-area: sidebar_right; }
+
+/* For presentation only, no need to copy the code below */
+
