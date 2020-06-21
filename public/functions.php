@@ -6,16 +6,10 @@
         if($like == "" || $like == null && $like2 == null && $like3 == null){
             $sth = $conn->prepare("SELECT $select FROM $from WHERE $where");
         }else{
-          //  $sth = $conn->prepare("SELECT $select FROM $from WHERE $where LIKE $like OR $like2 OR $like3");
           $sth = $conn->prepare("SELECT $select FROM $from WHERE $where LIKE $like OR $where LIKE $like2 OR $where LIKE $like3");
-          //echo "SELECT $select FROM $from WHERE $where LIKE $like OR $like2 OR $like3";
         }
         $sth->execute();
-        /* Fetch all of the remaining rows in the result set */
-       // print("Fetch all of the remaining rows in the result set:\n");
         $result = $sth->fetchAll();
-        //print_r($result);
-        //return $result;
         $myJSON = json_encode($result);
         return $myJSON;
     }
@@ -26,9 +20,12 @@
     }elseif($_GET['data'] == "front_brand"){
         $brandFilter = $_GET['filter'];
         echo writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "`title`", "'%" . $brandFilter . "%'", "NULL", "NULL");
+    }elseif($_GET['data'] == "prod"){
+        $id = $_GET['id'];
+        $brandFilter = $_GET['filter'];
+        echo writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "`id`=". $id ."", null, null, null);
     }
-
-//SELECT `id`,`title`,`description`,`price`,`img_url` FROM `products` WHERE `title` LIKE '%oneplus%' OR NULL OR NULL
+    
 
 ?>
 
