@@ -1,0 +1,147 @@
+body{margin: 0px;}
+.item > *:not(.edit_button):not(.delete_button) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.item > *:not(:nth-child(n+5)) {
+    border-right: 1px solid #0000000d;
+    line-height: 481%;
+}
+.search input{
+    height: 100%;
+    width: 300px;
+    padding: 0px 10px;
+    border: none;
+    box-shadow: 1px 0px 0px #00000029;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+.desc br { 
+    display: inline;
+    content: ' ';
+    clear:none;
+}
+.desc p{
+    display: inline;
+    content: ' ';
+    clear:none;
+}
+
+.img{
+    width: 11%;
+}
+.unified_button{
+    padding: 8px 25px;
+    background-color: #793f90;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+}
+.unified_button:hover{
+    background-color: #80008066;
+}
+.filler{
+    width: 22.5%;
+}
+.cat{
+    background-color: #ffffff;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    height: 47px;
+    border-top: 1px solid black;
+}
+.item{
+    background-color: #ffffff;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    height: 87px;
+    border-top: 1px solid black;
+}
+.title{
+    background-color: #fff;
+    width: 42%;
+    max-width: 42%;
+}
+.desc{
+    background-color: #fff;
+    width: 56%;
+    text-overflow: clip;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 41%;
+    max-height: 76px;
+}
+.id{
+    width: 10%;
+    max-width: 10%;
+}
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.price{
+    width: 17%;
+    max-width: 17%;
+}
+.product_settings{
+    background: rgb(228, 228, 228);
+    display: flex;
+    width: 60%;
+    flex-direction: row-reverse;
+}
+.product_list{
+    width: 60%;
+    box-shadow: 0px 1px 1px black;
+}
+.add_button{
+    padding: 10px 15px;
+    background-color: #80008066;
+    border: 1px solid black;
+}
+.overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    background-color: #000000c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.editwindow{
+    padding: 7px 30px 30px 30px;
+    background-color: #fff;
+}
+.editwindow input {
+    width: 300px;
+    padding: 10px 10px;
+    border: none;
+    box-shadow: 1px 0px 0px #00000029;
+    background-color: #f3f3f3;
+    color: black;
+    font-weight: bold;
+}
+.formattedTextarea{
+    width: calc(100% - 10px);
+    background-color: #525252;
+    height: 63%;
+    margin-top: 10px;
+    padding: 5px;
+    max-width: 907px;
+    overflow-y: scroll;
+    color: #ffffff;
+}
+.formattedTextarea:focus{
+    outline: none;
+}
+.edit{
+    background-color: #fff;
+}
