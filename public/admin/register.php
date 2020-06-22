@@ -60,7 +60,7 @@
 
     $firstname      = '';
     $lastname       = '';
-    $mail           = '';
+    $email           = '';
     $mobile           = '';
     $street          = '';
     $postalcode     = '';
@@ -71,7 +71,7 @@
     if (isset($_POST['register'])) {
         $firstname        = trim($_POST['firstname']);
         $lastname         = trim($_POST['lastname']);
-        $email             = trim($_POST['mail']);
+        $email             = trim($_POST['email']);
         $password          = trim($_POST['password']);
         $confirmPass        = trim($_POST['confirmPass']);
         $mobile            = trim($_POST['mobile']);
@@ -122,18 +122,18 @@
         if (empty($error)) {
             try {
                 $query = "
-                    INSERT INTO users ( `first_name`, `last_name`, `password`, `email`, `phone`, `street`, `postal_code`, `city`, `country`)
-                    VALUES ( :first_name, :last_name, :password, :mail, :phone, :street, :postal_code, :city, :country);
+                    INSERT INTO users ( `firstname`, `lastname`, `password`, `email`, `mobile`, `street`, `postalcode`, `city`, `country`)
+                    VALUES ( :firstname, :lastname, :password, :email, :mobile, :street, :postalcode, :city, :country);
                 ";
 
                 $stmt = $dbconnect->prepare($query);
-                $stmt->bindValue(':first_name', $firstname);
-                $stmt->bindValue(':last_name', $lastname);
+                $stmt->bindValue(':firstname', $firstname);
+                $stmt->bindValue(':lastname', $lastname);
                 $stmt->bindValue(':password', $password);
-                $stmt->bindValue(':mail', $email);
-                $stmt->bindValue(':phone', $mobile);
+                $stmt->bindValue(':email', $email);
+                $stmt->bindValue(':mobile', $mobile);
                 $stmt->bindValue(':street', $street);
-                $stmt->bindValue(':postal_code', $postalcode);
+                $stmt->bindValue(':postalcode', $postalcode);
                 $stmt->bindValue(':city', $city);
                 $stmt->bindValue(':country', $country);
                 $result = $stmt->execute(); 
@@ -175,7 +175,7 @@
 
                     <p>
                         <label for="input1">Din M@iladress:</label> <br>
-                        <input type="text" class="text" name="mail" value="<?=htmlentities($mail)?>">
+                        <input type="text" class="text" name="email" value="<?=htmlentities($email)?>">
                     </p>
 
                     <p>

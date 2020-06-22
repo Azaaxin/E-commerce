@@ -51,7 +51,7 @@ if (isset($_SESSION['firstname'])){
                 <li class="list-group-item"><b>User Id: </b><?php echo $user['id']?></li>
                 <li class="list-group-item"><b>Förnamn: </b><?=htmlentities(ucfirst($user['firstname']));?></li>
                 <li class="list-group-item"><b>Efternamn: </b><?=htmlentities(ucfirst($user['lastname']));?></li>
-                <li class="list-group-item"><b>E-post: </b><?=htmlentities(ucfirst($user['mail']));?></li>
+                <li class="list-group-item"><b>E-post: </b><?=htmlentities(ucfirst($user['email']));?></li>
                 <li class="list-group-item"><b>Mobil: </b><?=htmlentities($user['mobile']);?></li>
                 <li class="list-group-item"><b>Adress: </b><?=htmlentities(ucfirst($user['street']));?></li>
                 <li class="list-group-item"><b>Postnummer: </b><?=htmlentities($user['postalcode']);?></li>

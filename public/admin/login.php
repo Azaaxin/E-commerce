@@ -40,7 +40,7 @@
     
 
     if (isset($_POST['Login'])) {
-        $mail    = $_POST['mail'];
+        $mail    = $_POST['email'];
         $password = $_POST['password'];
 
         try {
@@ -50,7 +50,7 @@
             ";
 
             $stmt = $dbconnect->prepare($query);
-            $stmt->bindValue(':mail', $mail);
+            $stmt->bindValue(':email', $email);
             $stmt->execute(); 
 
             $user = $stmt->fetch(); 
@@ -62,7 +62,7 @@
 
         if ($mail === $user['email'] && $password === $user['password']) {
             echo  "logged in";
-            $_SESSION['mail'] = $user['mail'];  
+            $_SESSION['email'] = $user['email'];  
             header('Location: mypage.php');
 
             exit;
@@ -84,7 +84,7 @@
                     
                     <p>
                         <label for="input1">MAILADRESS:</label> <br>
-                        <input type="text" class="text" name="mail">
+                        <input type="text" class="text" name="email">
                     </p>
 
                     <p>
