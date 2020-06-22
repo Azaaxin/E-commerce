@@ -1,0 +1,32 @@
+#border-content{
+	margin-left: 50px;
+}
+
+.editUserBtn:hover, #submit-delete:hover{
+	opacity: 0.8;
+}
+
+.form-row{
+	margin-bottom: 50px;
+}
+#addUser-form{
+	margin-top: 50px;
+}
+
+.success_msg{
+	height: 30px;
+	margin-bottom:20px;
+	color: #fff;
+
+
+}
+
+.error_msg li{
+	text-decoration: none;
+
+}
+
+
+button a{
+	color: #fff;
+}

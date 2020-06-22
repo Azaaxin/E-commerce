@@ -24,13 +24,13 @@
         $country           = trim($_POST['country']);
 
         if (empty($first_name)) {
-            $error .= "<li>firt name är obligatoriskt</li>";
+            $error .= "<li>Förnamn är obligatoriskt</li>";
         }
         if (empty($last_name)) {
-            $error .= "<li>last name är obligatoriskt</li>";
+            $error .= "<li>Efternamn är obligatoriskt</li>";
         }
         if (empty($email)) {
-            $error .= "<li>email är obligatoriskt</li>";
+            $error .= "<li>Email är obligatoriskt</li>";
         }
 
         if (empty($password)) {
@@ -43,7 +43,7 @@
         
 
         if ($error) {
-            $msg = "<ul class='error_msg'>{$error}</ul>";
+            $msg = "<ul class='error_msg bg-danger'>{$error}</ul>";
         }
 
         if (empty($error)) {
@@ -69,9 +69,9 @@
             }
 
             if ($result) {
-                $msg = '<div class="success_msg">Ny användare är skapad</div>';
+                $msg = '<div class="success_msg bg-success">Ny användare är skapad</div>';
             } else {
-                $msg = '<div class="error_msg">Skapandet av användaren misslyckades. Var snäll och försök igen senare!</div>';
+                $msg = '<div class="error_msg bg-danger">Skapandet av användaren misslyckades. Var snäll och försök igen senare!</div>';
             }
         }
     }       
@@ -79,71 +79,79 @@
 
 
 ?>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Add user</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <h3 style="text-align: center;">Skapa Användare</h3>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                
+                
+                    <form method="POST" action="#" id="addUser-form">
+                        <fieldset>
+
+                          <?=$msg?>
+
+                          <div class="form-row">
+                            <div class="col-6">
+                              <input type="text" class="form-control" name="first_name" placeholder="Förnamn" value="<?=htmlentities($first_name)?>">
+                            </div>
+                            <div class="col-6">
+                              <input type="text" class="form-control" name="last_name" value="<?=htmlentities($last_name)?>" placeholder="Efternamn">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-6">
+                              <input type="text" class="form-control" name="email" value="<?=htmlentities($email)?>" placeholder="Email">
+                            </div>
+                            <div class="col-6">
+                              <input type="text" class="form-control" name="password" placeholder="Lösenord">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-6">
+                              <input type="text" class="form-control" name="phone" value="<?=htmlentities($phone)?>" placeholder="Telefon nr">
+                            </div>
+                            <div class="col-6">
+                              <input type="text" class="form-control" name="street" value="<?=htmlentities($street)?>" placeholder="Gatuaddres">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-6">
+                              <input type="text" class="form-control" name="postal_code" value="<?=htmlentities($postal_code)?>" placeholder="Postnummer">
+                            </div>
+                            <div class="col-6">
+                              <input type="text" class="form-control" name="city" value="<?=htmlentities($city)?>" placeholder="Stad">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-6">
+                              <input type="text" class="form-control" name="country" value="<?=htmlentities($country)?>" placeholder="Land">
+                            </div>
+                          </div>
+                            <div class="row justify-content-center">
+                                <div class="col-0">
+                                    <p>
+                                        <button type="submit" name="register" class="btn btn-success" value="register">Skapa</button>
+                                        <a class="btn btn-info" href="index.php" role="button">Tillbaka</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            
 
 
-    <!-- Sidans/Dokumentets huvudsakliga innehåll -->
-    <div id="content">
-        <article class="border">
-            <form method="POST" action="#">
-                <fieldset>
-                    <legend>Skapa ny användare</legend>
-                    
-                    <!-- Visa errormeddelanden -->
-                    <?=$msg?>
-                    
-                    <p>
-                        <label for="input1">Förnamn:</label> <br>
-                        <input type="text" class="text" name="first_name" value="<?=htmlentities($first_name)?>">
-                    </p>
 
-                    <p>
-                        <label for="input1">Efternamn:</label> <br>
-                        <input type="text" class="text" name="last_name" value="<?=htmlentities($last_name)?>">
-                    </p>
 
-                    <p>
-                        <label for="input1">E-post:</label> <br>
-                        <input type="text" class="text" name="email" value="<?=htmlentities($email)?>">
-                    </p>
+    </body>
+    </html>
 
-                    <p>
-                        <label for="input2">Lösenord:</label> <br>
-                        <input type="password" class="text" name="password">
-                    </p>
-
-                    <p>
-                        <label for="input1">Telfon nr:</label> <br>
-                        <input type="text" class="text" name="phone" value="<?=htmlentities($phone)?>">
-                    </p>
-
-                    <p>
-                        <label for="input1">Gatuaddres</label> <br>
-                        <input type="text" class="text" name="street" value="<?=htmlentities($street)?>">
-                    </p>
-
-                    <p>
-                        <label for="input1">Postkod</label> <br>
-                        <input type="text" class="text" name="postal_code" value="<?=htmlentities($postal_code)?>">
-                    </p>
-
-                    <p>
-                        <label for="input1">Stad:</label> <br>
-                        <input type="text" class="text" name="city" value="<?=htmlentities($city)?>">
-                    </p>
-
-                    <p>
-                        <label for="input1">Land:</label> <br>
-                        <input type="text" class="text" name="country" value="<?=htmlentities($country)?>">
-                    </p>
-
-                    <p>
-                        <input type="submit" name="register" value="Skapa"> | 
-                        <a href="index.php">Tillbaka</a>
-                    </p>
-                </fieldset>
-            </form>
-        
-            <hr>
-        </article>
-    </div>
 
