@@ -3,6 +3,8 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="author" content="Andreas Ronvall">
+    <meta name="description" content="Andreas Ronvall Update User 4-sidan">
     <title>Update User</title>
     <link rel="stylesheet" href="css/register.css">
     <meta name='viewport' content='width=device-width, initial-scale=1'>

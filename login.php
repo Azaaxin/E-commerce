@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset='utf-8'>
+    <meta name="author" content="Andreas Ronvall">
+    <meta name="description" content="Andreas Ronvall Logga in i 4-shoppen">
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Logga In i 4 shopen</title>
     <link rel="stylesheet" href="css/register.css">

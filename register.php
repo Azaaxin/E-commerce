@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset='utf-8'>
+    <meta name="author" content="Andreas Ronvall">
+    <meta name="description" content="Andreas Ronvall Register 4-sidan">
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Registrera dig</title>
     <link rel="stylesheet" href="css/register.css">

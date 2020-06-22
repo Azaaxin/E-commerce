@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset='utf-8'>
+    <meta name="author" content="Andreas Ronvall">
+    <meta name="description" content="Andreas Ronvall Min sida 4-sidan">
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Min Sida</title>
     <link rel="stylesheet" href="css/register.css">
