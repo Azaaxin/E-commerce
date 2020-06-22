@@ -52,12 +52,3 @@ function delay(callback, ms) {
 $('.EDimage, .EDtitle, .EDprice, .EDdesc').on("input change keyup", delay(function (e){
     submit();
 }, 500));
-// $('.EDtitle').on("input change keyup", delay(function (e){
-//     submit();
-// }, 500));
-// $('.EDprice').on("input change keyup", delay(function (e){
-//     submit();
-// }, 500));
-// $('.EDdesc').on("input change keyup", delay(function (e){
-//     submit();
-// }, 500));
