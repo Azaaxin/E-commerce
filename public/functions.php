@@ -45,8 +45,5 @@
         $brandFilter = $_GET['filter'];
         echo writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "`title`", "'%" . $search . "%'", "NULL", "NULL");
     }
-    
-
-
 ?>
 

@@ -42,19 +42,22 @@ function delay(callback, ms) {
     $(".overlay").show();
   });
 
-$('.EDimage').on('keyup', function(){
+  function submit(){
+    $(".feed").empty();
     $("#textarea_hidden").val($(".EDdesc").html());
     $("#editForm").ajaxSubmit({url: '../functions.php?edit=true', type: 'post'})
-});
-$('.EDtitle').on('keyup', function(){
-    $("#textarea_hidden").val($(".EDdesc").html());
-    $("#editForm").ajaxSubmit({url: '../functions.php?edit=true', type: 'post'})
-});
-$('.EDprice').on('keyup', function(){
-    $("#textarea_hidden").val($(".EDdesc").html());
-    $("#editForm").ajaxSubmit({url: '../functions.php?edit=true', type: 'post'})
-});
-$('.EDdesc').on('keyup', function(){
-    $("#textarea_hidden").val($(".EDdesc").html());
-    $("#editForm").ajaxSubmit({url: '../functions.php?edit=true', type: 'post'})
-});
+    admin_read();
+  }
+
+$('.EDimage, .EDtitle, .EDprice, .EDdesc').on("input change keyup", delay(function (e){
+    submit();
+}, 500));
+// $('.EDtitle').on("input change keyup", delay(function (e){
+//     submit();
+// }, 500));
+// $('.EDprice').on("input change keyup", delay(function (e){
+//     submit();
+// }, 500));
+// $('.EDdesc').on("input change keyup", delay(function (e){
+//     submit();
+// }, 500));
