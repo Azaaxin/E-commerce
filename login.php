@@ -101,3 +101,4 @@
             <hr>
         </article>
     </div>
+<?php include('layout/footer.php'); ?>

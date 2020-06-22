@@ -70,4 +70,4 @@ if (isset($_SESSION['firstname'])){
                 <input type="submit" name="deleteUserBtn" value="Radera detta konto">
 	</section>
     
-    
+    <?php include('layout/footer.php'); ?>
