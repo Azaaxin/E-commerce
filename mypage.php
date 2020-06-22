@@ -1,3 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Min Sida</title>
+    <link rel="stylesheet" href="css/register.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <script src="js/phone_menu.js"></script>
+</head>
+<body>
+<?php 
+    include "layout/header.php";
+    include "layout/phone_menu.php";
+?> 
+
+
+
 <?php
 require('src/config.php');
 require('src/dbconnect.php'); 
@@ -14,13 +35,9 @@ if (isset($_SESSION['firstname'])){
     $user = fetchUsersById($_SESSION['id']);
 }
 
-include('layout/header.php');
+
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Min Sida</title>
+
     
 
     
