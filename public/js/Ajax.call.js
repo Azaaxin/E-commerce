@@ -1,3 +1,7 @@
+function htmlspecialchars(str) {
+  str = str.replace(/(?:\r\n|\r|\n)/g, '<br>');
+  return str.replace('&', '&amp;').replace('"', '&quot;').replace("'", '&#039;').replace('<', '&lt;').replace('>', '&gt;');
+}
 function front_page_ajax(){
     let baseUrl = '../public/functions.php';
     $.get(baseUrl + '?data=' + "main_prod", function(response) {
@@ -58,7 +62,7 @@ function brandsAjaxProducts(filter){
                   "<div class='brand_n'>Brand</div>" +
                   "<div class='title'>"+ req[index].title +"</div>" +
                   "<div class='prize'>"+ req[index].price +"kr</div></div></div>");
-                  $("._procontainer").append(t).show('slow');;
+                  $("._procontainer").append(t).show('slow');
                 };
           },
           'json'
@@ -85,5 +89,67 @@ function productPage(filter){
           
       });
 }
+function admin_read(){
+  let baseUrl = '../functions.php';
+  $.get(baseUrl + '?data=' + "main_prod", function(response) {
 
+              let req = response;
+              $.each(req, function(index) {
+                var t = $("<div class='item'>"+
+                "<div class='id'>"+ req[index].id+"</div>" +
+                "<div class='img'><img src='"+req[index].img_url+"' alt='' width='35px' srcset=''></div>" +
+                "<div class='title'>"+req[index].title+"</div>" +
+                "<div class='desc'>"+htmlspecialchars(req[index].description)+"</div>" +
+                "<div class='price'>"+req[index].price+"</div>" +
+                "<div id='"+ req[index].id+"' class='edit_button unified_button'>Edit</div>" +
+                "<div id= '"+ req[index].id+"' class='delete_button unified_button'>Delete</div>" +
+                "</div>");
+                $(".feed").append(t).show('slow');
+              });
+              
+          },
+          'json'
+      ).fail(function() {
+          
+      });
+}
+function admin_search(searchterm){
+  let baseUrl = '../functions.php';
+  $.get(baseUrl + '?data=' + "search" + "&search=" + searchterm, function(response) {
 
+              let req = response;
+              $.each(req, function(index) {
+                var t = $("<div class='item'>"+
+                "<div class='id'>"+ req[index].id+"</div>" +
+                "<div class='img'><img src='"+req[index].img_url+"' alt='' width='35px' srcset=''></div>" +
+                "<div class='title'>"+req[index].title+"</div>" +
+                "<div class='desc'>"+htmlspecialchars(req[index].description)+"</div>" +
+                "<div class='price'>"+req[index].price+"</div>" +
+                "<div id='"+ req[index].id+"' class='edit_button unified_button'>Edit</div>" +
+                "<div id= '"+ req[index].id+"' class='delete_button unified_button'>Delete</div>" +
+                "</div>");
+                $(".feed").append(t).show('slow');
+              });
+              
+          },
+          'json'
+      ).fail(function() {
+        $(".feed").append("Kan inte hitta produkterna du sökte efter.").show('slow');
+      });
+}
+function edit_item_read(filter){
+  let baseUrl = '../functions.php';
+  $.get(baseUrl + '?data=' + "prod" + "&id=" + filter, function(response) {
+              let req = response[0];
+                   $(".EDimage").val(req.img_url);
+                   $(".EDtitle").val(req.title);
+                   $(".EDdesc").empty();
+                   $(".EDdesc").append(req.description);
+                   $(".EDprice").val(req.price);
+                   $("#id").val(req.id);
+          },
+          'json'
+      ).fail(function() {
+          
+      });
+}
