@@ -25,7 +25,7 @@
     
     //checkLoginSession();
 
-    require('src/dbconnect.php');
+  
 
   
     if (isset($_POST['deleteBtn'])) {
@@ -238,6 +238,8 @@
         </form>
     </div> 
     
-
+</body>
 
 <?php include('layout/footer.php'); ?>
+
+</html>

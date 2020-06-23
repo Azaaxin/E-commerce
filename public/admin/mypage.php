@@ -43,7 +43,7 @@ if (isset($_SESSION['firstname'])){
     
 
     
-<body>
+
 	<section id ="userinfo">
         <h2>Min Kontoinformation</h2>
         <div class="row">
@@ -70,4 +70,8 @@ if (isset($_SESSION['firstname'])){
                 <input type="submit" name="deleteUserBtn" value="Radera detta konto">
 	</section>
     
-    <?php include('layout/footer.php'); ?>
+</body>
+
+<?php include('layout/footer.php'); ?>
+
+</html>

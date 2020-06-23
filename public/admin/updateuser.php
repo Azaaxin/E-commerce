@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name="author" content="Andreas Ronvall">
     <meta name="description" content="Andreas Ronvall Update User 4-sidan">
-    <title>Update User</title>
+    <title>Uppdatera användaruppgifter</title>
     <link rel="stylesheet" href="css/register.css">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -29,18 +29,10 @@
      // Fetch user by id
      $user = fetchUsersById($_GET['id']);
 
-     include('layout/header.php')
+   
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Uppdatera användare</title>
-     
-      
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    </head>
-    <body>
+
+
         <div id="content">
             <form method="POST" action="#" id="updateform">
                     <fieldset>
@@ -105,5 +97,11 @@
                     </fieldset>
                 </form>
         </div>
-        <?php include('layout/footer.php'); ?>
+    
         
+
+</body>
+
+<?php include('layout/footer.php'); ?>
+
+</html>
