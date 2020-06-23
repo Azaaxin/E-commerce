@@ -28,3 +28,6 @@
       .rec_item9 { display:none}
       .more{display:block;}
   }
+  .maxEight:nth-child(n+11) {
+    display: none;
+  }

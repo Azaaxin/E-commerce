@@ -75,5 +75,18 @@
         $brandFilter = $_GET['filter'];
         echo writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "`title`", "'%" . $search . "%'", "NULL", "NULL");
     }
+
+    function shopping_cart(){
+        session_start();
+        //$array_handler = array();
+        if(!empty($_GET['id'])){
+            array_push($array_handler, $_GET['id']);
+            $_SESSION["products_shopping"] = $array_handler;
+        }
+        echo json_encode($array_handler);
+    }
+    if($_GET['cart']=="true"){
+        shopping_cart();
+    }
 ?>
 

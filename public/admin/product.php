@@ -1,8 +1,7 @@
 <link rel="stylesheet" href="../css/edit_products.css">
-<?php include "../layout/header.php"; ?>
+<?php include "parts/header.php"; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script> 
-<link rel="stylesheet" href="../css/header.css">
 <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
     <script src="../js/phone_menu.js"></script>
     <script src="../js/Ajax.call.js"></script>
@@ -52,7 +51,6 @@
         <div class="confirmed_del unified_button">Ta bort produkt</div>
     </div>
 </div>
-<!-- <script src="../js/Ajax.call.js"></script> -->
 <script>admin_read();</script>
 <script src="../js/edit_products.js"></script>
 <script src="../js/spincore.min.js"></script>

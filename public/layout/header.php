@@ -5,7 +5,7 @@
     <div class="Menu">
     <ul>
         <li><a href="category-page.php">Handla</a></li>
-        <li><a href="reparation-page.php">Service</a></li>
+        <li><a href="admin/product.php">Admin</a></li>
         <li><a href="contact-page.php">Kontakta oss</a></li>
     </ul>
     </div>  

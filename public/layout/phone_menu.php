@@ -14,8 +14,7 @@
     </div>
     <div class="flex-menu-wrapper">
         <div class="box_menu" onclick="window.location.href='index.php'">Hem</div>
-        <div class="box_menu" onclick="window.location.href='brands-page.php'">Märken</div>
-        <div class="box_menu" onclick="window.location.href='category-page.php'">Cyklar</div>
+        <div class="box_menu" onclick="window.location.href='admin/product.php'">Admin</div>
         <div class="box_menu" onclick="window.location.href='reparation-page.php'">Service</div>
         <div class="box_menu" onclick="window.location.href='contact-page.php'">Kontakt</div>
     </div>

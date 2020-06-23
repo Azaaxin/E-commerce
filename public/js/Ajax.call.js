@@ -30,7 +30,7 @@ function reco_front_page_ajax(){
               let req = response;
             //  $.each(req, function(index) {
                   for(let index=0; index<9; index++){
-                    var t= $("<div class='Item rec_item"+index+"'>" +
+                    var t= $("<div class='Item maxEight rec_item"+index+"'>" +
                       "<div id='"+ req[index].id +"' class='cont'>" +
                       "<div class='img_c'><img src='"+req[index].img_url+"' width='30%'></div>" +
                       "<div class='brand_n'>Brand</div>" +
