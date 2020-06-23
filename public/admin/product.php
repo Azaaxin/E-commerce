@@ -2,14 +2,13 @@
 <?php include "../layout/header.php"; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script> 
-
 <link rel="stylesheet" href="../css/header.css">
 <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
     <script src="../js/phone_menu.js"></script>
     <script src="../js/Ajax.call.js"></script>
 <div class="wrapper">
     <div class="product_settings">
-        <div class="unified_button">Add</div>
+        <div class="unified_button add_button">Add</div>
         <div class="search"><input type="text" id="src" name="search" autocomplete="off" placeholder="Sök produkt" id=""></div>
     </div>
     <div class="product_list">
@@ -37,8 +36,25 @@
         </form>
         
     </div>
+    <div id="wcreate" class="createwindow">
+    <h3>Create</h3>
+        <form id="createForm" action="#">
+                <input id="#CDtitle" class="CDtitle" type="text" name="title" placeholder="Title">
+                <input id="#CDimage" class="CDimage"type="text" name="img" placeholder="Image url">
+                <input id="#CDprice" class="CDprice" type="text" name="price" placeholder="Price">
+                <div id="#CDdesc" placeholder="Skriv en beskrivning..." class="formattedTextarea editable CDdesc"></div>
+                <input type="hidden" class="hdesc" id="Ctextarea_hidden" name="desc">
+                <input type="hidden" id="Cid" name="id">
+        </form>
+    </div>
+    <div id="wdelete" class="deletewindow">
+        <p>Är du säker på att du vill ta bort denna produkt?</p>
+        <div class="confirmed_del unified_button">Ta bort produkt</div>
+    </div>
 </div>
 <!-- <script src="../js/Ajax.call.js"></script> -->
 <script>admin_read();</script>
 <script src="../js/edit_products.js"></script>
 <script src="../js/spincore.min.js"></script>
+<script src="../js/jquery.toast.js"></script>
+<link rel="stylesheet" href="../css/jquery.toast.css">
