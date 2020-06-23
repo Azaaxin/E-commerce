@@ -1,9 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name="author" content="Andreas Ronvall">
+    <meta name="description" content="Andreas Ronvall Register 4-sidan">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Registrera dig</title>
+    <link rel="stylesheet" href="css/register.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <script src="js/phone_menu.js"></script>
+</head>
+<body>
+<?php 
+    include "layout/header.php";
+    include "layout/phone_menu.php";
+?> 
+
 <?php 
     require('src/config.php');
     
     //checkLoginSession();
 
-    require('src/dbconnect.php');
+  
 
   
     if (isset($_POST['deleteBtn'])) {
@@ -38,7 +60,7 @@
 
     $firstname      = '';
     $lastname       = '';
-    $mail           = '';
+    $email           = '';
     $mobile           = '';
     $street          = '';
     $postalcode     = '';
@@ -49,7 +71,7 @@
     if (isset($_POST['register'])) {
         $firstname        = trim($_POST['firstname']);
         $lastname         = trim($_POST['lastname']);
-        $email             = trim($_POST['mail']);
+        $email             = trim($_POST['email']);
         $password          = trim($_POST['password']);
         $confirmPass        = trim($_POST['confirmPass']);
         $mobile            = trim($_POST['mobile']);
@@ -100,18 +122,18 @@
         if (empty($error)) {
             try {
                 $query = "
-                    INSERT INTO users ( `first_name`, `last_name`, `password`, `email`, `phone`, `street`, `postal_code`, `city`, `country`)
-                    VALUES ( :first_name, :last_name, :password, :mail, :phone, :street, :postal_code, :city, :country);
+                    INSERT INTO users ( `firstname`, `lastname`, `password`, `email`, `mobile`, `street`, `postalcode`, `city`, `country`)
+                    VALUES ( :firstname, :lastname, :password, :email, :mobile, :street, :postalcode, :city, :country);
                 ";
 
                 $stmt = $dbconnect->prepare($query);
-                $stmt->bindValue(':first_name', $firstname);
-                $stmt->bindValue(':last_name', $lastname);
+                $stmt->bindValue(':firstname', $firstname);
+                $stmt->bindValue(':lastname', $lastname);
                 $stmt->bindValue(':password', $password);
-                $stmt->bindValue(':mail', $email);
-                $stmt->bindValue(':phone', $mobile);
+                $stmt->bindValue(':email', $email);
+                $stmt->bindValue(':mobile', $mobile);
                 $stmt->bindValue(':street', $street);
-                $stmt->bindValue(':postal_code', $postalcode);
+                $stmt->bindValue(':postalcode', $postalcode);
                 $stmt->bindValue(':city', $city);
                 $stmt->bindValue(':country', $country);
                 $result = $stmt->execute(); 
@@ -153,7 +175,7 @@
 
                     <p>
                         <label for="input1">Din M@iladress:</label> <br>
-                        <input type="text" class="text" name="mail" value="<?=htmlentities($mail)?>">
+                        <input type="text" class="text" name="email" value="<?=htmlentities($email)?>">
                     </p>
 
                     <p>
@@ -216,4 +238,8 @@
         </form>
     </div> 
     
+</body>
+
 <?php include('layout/footer.php'); ?>
+
+</html>
