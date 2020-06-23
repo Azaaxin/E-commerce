@@ -1,0 +1,13 @@
+/* MAIN STYLING FOR TRAILSTOP */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
+* {
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.bg-trailstop-purple {background-color: #67539E !important;}
+.bg-trailstop-light-grey {background-color: #2A2A2A !important;}
+.bg-trailstop-dark-grey {background-color: #1E1E1E !important;}
+.bg-trailstop-black {background-color: #000000 !important;}
+.bg-trailstop-white {background-color: #FFFFFF !important;}

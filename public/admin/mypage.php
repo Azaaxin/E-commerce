@@ -11,20 +11,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/phone_menu.css">
+<link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
     <script src="js/phone_menu.js"></script>
 </head>
 <body>
 <?php 
-    include "layout/header.php";
-    include "layout/phone_menu.php";
+    include "../layout/header.php";
+    include "../layout/phone_menu.php";
 ?> 
 
 
-
 <?php
-require('src/config.php');
-require('src/dbconnect.php'); 
 
+    
+    require('../../src/config.php');
+    require('../../src/dbconnect.php');
 
 if (!isset($_SESSION['first_name'])) {
         //header('login.php?mustLogin');
@@ -59,7 +63,7 @@ if (isset($_SESSION['firstname'])){
                 <li class="list-group-item"><b>Land: </b><?=htmlentities(ucfirst($user['country']));?></li>
                 <li class="list-group-item"><b>Register Date: </b><?=htmlentities($user['register_date']);?></li>
             </ul>
-        </div>
+        </div> 
         <div class="submitBtns">
             <form action="update-user.php" method="GET">
                 <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
@@ -72,6 +76,6 @@ if (isset($_SESSION['firstname'])){
     
 </body>
 
-<?php include('layout/footer.php'); ?>
+<?php include('../layout/footer.php'); ?>
 
 </html>
