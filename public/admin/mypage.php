@@ -63,7 +63,7 @@ if (isset($_SESSION['firstname'])){
                 <li class="list-group-item"><b>Land: </b><?=htmlentities(ucfirst($user['country']));?></li>
                 <li class="list-group-item"><b>Register Date: </b><?=htmlentities($user['register_date']);?></li>
             </ul>
-        </div>
+        </div> 
         <div class="submitBtns">
             <form action="update-user.php" method="GET">
                 <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
