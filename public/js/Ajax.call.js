@@ -94,12 +94,13 @@ function admin_read(){
   $.get(baseUrl + '?data=' + "main_prod", function(response) {
 
               let req = response;
+              $(".feed").empty();
               $.each(req, function(index) {
                 var t = $("<div class='item'>"+
                 "<div class='id'>"+ req[index].id+"</div>" +
                 "<div class='img'><img src='"+req[index].img_url+"' alt='' width='35px' srcset=''></div>" +
                 "<div class='title'>"+req[index].title+"</div>" +
-                "<div class='desc'>"+htmlspecialchars(req[index].description)+"</div>" +
+                "<div class='desc'>"+req[index].description+"</div>" +
                 "<div class='price'>"+req[index].price+"</div>" +
                 "<div id='"+ req[index].id+"' class='edit_button unified_button'>Edit</div>" +
                 "<div id= '"+ req[index].id+"' class='delete_button unified_button'>Delete</div>" +
@@ -123,7 +124,7 @@ function admin_search(searchterm){
                 "<div class='id'>"+ req[index].id+"</div>" +
                 "<div class='img'><img src='"+req[index].img_url+"' alt='' width='35px' srcset=''></div>" +
                 "<div class='title'>"+req[index].title+"</div>" +
-                "<div class='desc'>"+htmlspecialchars(req[index].description)+"</div>" +
+                "<div class='desc'>"+req[index].description+"</div>" +
                 "<div class='price'>"+req[index].price+"</div>" +
                 "<div id='"+ req[index].id+"' class='edit_button unified_button'>Edit</div>" +
                 "<div id= '"+ req[index].id+"' class='delete_button unified_button'>Delete</div>" +
@@ -153,3 +154,4 @@ function edit_item_read(filter){
           
       });
 }
+

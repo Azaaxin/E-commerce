@@ -1,8 +1,15 @@
 <?php
     require('../src/dbconnect.php');
     error_reporting(1);
-
-
+    function delete_prod($conn){
+        $sth = $conn->prepare("DELETE FROM `products` WHERE `id` = :id;");
+        $sth->bindParam(':id', $_POST['id']);
+        $sth->execute();
+        echo "Destroyed";
+    }
+    if($_GET['delete']=="true"){
+        delete_prod($dbconnect);
+    }
 
     function editProd($conn){
         $edit_title = htmlspecialchars($_POST['title']);
@@ -11,11 +18,34 @@
         $edit_img = htmlspecialchars($_POST['img']);
         $edit_id = htmlspecialchars($_POST['id']);
 
-        $sth = $conn->prepare("UPDATE `products` SET `title` = '$edit_title', `description` = '$edit_desc', `price` = '$edit_price', `img_url` = '$edit_img'  WHERE `id` = '$edit_id';");
+        $sth = $conn->prepare("UPDATE `products` SET `title` = :title, `description` = :description, `price` = :price, `img_url` = :img_url WHERE `id` = :id;");
+        $sth->bindParam(':title', $edit_title);
+        $sth->bindParam(':description', $edit_desc);
+        $sth->bindParam(':price', $edit_price);
+        $sth->bindParam(':img_url', $edit_img);
+        $sth->bindParam(':id', $edit_id);
         $sth->execute();
     }
     if($_GET['edit']=="true"){
         editProd($dbconnect);
+    }
+    
+    function createProd($conn){
+        $create_title = htmlspecialchars($_POST['title']);
+        $create_desc = $_POST['desc'];
+        $create_price = htmlspecialchars($_POST['price']);
+        $create_img = htmlspecialchars($_POST['img']);
+
+        $sth = $conn->prepare("INSERT INTO `products` (`title`, `description`, `price`, `img_url`) VALUES (:title, :description, :price, :img_url)");
+        $sth->bindParam(':title', $create_title);
+        $sth->bindParam(':description', $create_desc);
+        $sth->bindParam(':price', $create_price);
+        $sth->bindParam(':img_url', $create_img);
+        $sth->execute();
+        echo "success";
+    }
+    if($_GET['create']=="true"){
+        createProd($dbconnect);
     }
 
     function writeProd($conn, $select, $from, $where, $like, $like2, $like3) {
