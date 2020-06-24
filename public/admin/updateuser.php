@@ -54,7 +54,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="input1">Mail-adress:</label> <br>
-                                <input type="text" class="form-control" name="mail" value="<?=htmlentities($user['email'])?>">
+                                <input type="text" class="form-control" name="email" value="<?=htmlentities($user['email'])?>">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="input1">Mobilnummer:</label> <br>

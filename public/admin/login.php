@@ -46,7 +46,7 @@
         try {
             $query = "
                 SELECT * FROM users
-                WHERE email = :mail;
+                WHERE email = :email;
             ";
 
             $stmt = $dbconnect->prepare($query);
