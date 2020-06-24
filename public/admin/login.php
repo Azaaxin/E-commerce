@@ -31,7 +31,7 @@
     $pageTitle = "Login";
     $pageId = ""; 
     error_reporting(-1);
-   
+
 
     $msg = "";
     if (isset($_GET['Loginneccesary'])) {
