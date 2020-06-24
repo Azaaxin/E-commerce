@@ -29,9 +29,6 @@
     
     require('../../src/config.php');
     require('../../src/dbconnect.php');
- //   include('public/layout/header.php');
-
-
     $pageTitle = "Login";
     $pageId = ""; 
 

@@ -170,12 +170,11 @@ function shopping_cart(filter){
                   $item = req[index];
                 }
                 
-                  $(".product_list").append("<div class='product_flex'>"+
+                  $(".product_list").append("<div id='" + $item.id + "'class='product_flex'>"+
                   "<div class='product_img_cart'><img src='"+ $item.img_url +"' width='32px' alt='product_image'></div>" +
                   "<div class='product_title'>" + $item.title + "</div>" +
                   "<div class='product_price'>" + $item.price + "kr</div>" +
                   "</div>");
-                
               });
           },
           'json'
