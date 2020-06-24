@@ -1,6 +1,6 @@
 <?php
     require('../src/dbconnect.php');
-    error_reporting(1);
+    error_reporting(0);
     function delete_prod($conn){
         $sth = $conn->prepare("DELETE FROM `products` WHERE `id` = :id;");
         $sth->bindParam(':id', $_POST['id']);
@@ -74,6 +74,24 @@
         $search = $_GET['search'];
         $brandFilter = $_GET['filter'];
         echo writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "`title`", "'%" . $search . "%'", "NULL", "NULL");
+    }
+
+    function shopping_cart($dbconnect){
+        session_start();
+        if(!empty($_GET['id']))
+             if($_SESSION["products_shopping"] == NULL){
+                $_SESSION["products_shopping"] = array(json_decode(writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "`id`=". $_GET['id'] ."", null, null, null)));
+            }else{
+                $fromDB = writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "`id`=". $_GET['id'] ."", null, null, null);
+                $array_dump = $_SESSION["products_shopping"];
+                $_SESSION["products_shopping"] = array_merge($array_dump, json_decode($fromDB));
+            }
+            echo json_encode($_SESSION["products_shopping"]);
+            if($_GET['s_d'] == "true")
+                session_destroy();
+    }
+    if($_GET['cart']=="true"){
+        shopping_cart($dbconnect);
     }
 ?>
 

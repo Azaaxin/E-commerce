@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/phone_menu.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/style.css">
 <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
     <script src="js/phone_menu.js"></script>
 </head>

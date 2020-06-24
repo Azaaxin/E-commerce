@@ -1,4 +1,7 @@
 body{margin: 0px;}
+body {
+    width: calc(100vw - 34px);
+}
 .item > *:not(.edit_button):not(.delete_button) {
     text-overflow: ellipsis;
     overflow: hidden;
