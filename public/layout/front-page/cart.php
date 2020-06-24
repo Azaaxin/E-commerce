@@ -39,8 +39,6 @@
                     close();
                 }
         }
-
-    
     });
     function close(){
         document.getElementById("min-ca").style.display = "none";

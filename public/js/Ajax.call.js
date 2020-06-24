@@ -158,6 +158,7 @@ function shopping_cart(filter){
   let baseUrl = 'functions.php';
   if(filter==undefined)
     filter="";
+    total_price = 0;
   $.get(baseUrl + '?cart=' + "true" + "&id=" + filter, function(response) {
               let req = response;
               $(".product_list").css("display","block");
@@ -173,6 +174,9 @@ function shopping_cart(filter){
                   "<div class='product_price'>" + $item.price + "kr</div>" +
                   "<div id='" + $item.id + "' class='remove'>x</div>" +
                   "</div>");
+                  total_price = parseInt(otal_price) + parseInt($item.price);
+                  $(".sum_cart").empty();
+                  $(".sum_cart").append("<div class='error'>Totalt: "+ total_price +"kr</div>");
               });
               if(req==null){
                 $(".product_list").css("display","flex");
