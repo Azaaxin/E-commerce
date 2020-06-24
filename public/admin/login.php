@@ -40,7 +40,7 @@
     
 
     if (isset($_POST['Login'])) {
-        $mail    = $_POST['email'];
+        $email    = $_POST['email'];
         $password = $_POST['password'];
 
         try {
@@ -60,7 +60,7 @@
         }
             echo $user['email'];
 
-        if ($mail === $user['email'] && $password === $user['password']) {
+        if ($email === $user['email'] && $password === $user['password']) {
             echo  "logged in";
             $_SESSION['email'] = $user['email'];  
             header('Location: mypage.php');
@@ -68,7 +68,7 @@
             exit;
         } else {
 
-            $msg = '<div class="error_message">Något blev FEL. FÖRSÖK igen.</div>';
+            $msg = '<div class="error_message"> Något blev FEL. FÖRSÖK igen .</div>';
         }
     }
 }
