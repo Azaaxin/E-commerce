@@ -30,7 +30,7 @@
     require('../../src/config.php');
     require('../../src/dbconnect.php');
 
-if (!isset($_SESSION['first_name'])) {
+if (!isset($_SESSION['firstname'])) {
         //header('login.php?mustLogin');
         header('Location: login.php?mustLogin');
         exit;
