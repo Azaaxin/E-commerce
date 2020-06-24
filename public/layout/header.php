@@ -36,4 +36,5 @@
     </div>
 </div>
 <?php include "front-page/cart.php" ?>
+<script>shopping_cart();</script>
 <!--- Header file ends ----->

@@ -154,4 +154,34 @@ function edit_item_read(filter){
           
       });
 }
+function shopping_cart(filter){
+  let baseUrl = 'functions.php';
+  if(filter==undefined)
+    filter="";
+  $.get(baseUrl + '?cart=' + "true" + "&id=" + filter, function(response) {
+              let req = response;
+              $(".product_list").css("display","block");
+              $(".product_list").empty();
+              console.log(req);
+              $.each(req, function(index) {
+                if(index == 0){
+                  $item = this[0];
+                }else{
+                  $item = req[index];
+                }
+                
+                  $(".product_list").append("<div class='product_flex'>"+
+                  "<div class='product_img_cart'><img src='"+ $item.img_url +"' width='32px' alt='product_image'></div>" +
+                  "<div class='product_title'>" + $item.title + "</div>" +
+                  "<div class='product_price'>" + $item.price + "kr</div>" +
+                  "</div>");
+                
+              });
+          },
+          'json'
+      ).fail(function() {
+        $(".product_list").empty();
+        $(".product_list").append("<div class='error'>Ooops något blev fel</div>");
+      });
+}
 
