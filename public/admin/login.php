@@ -41,7 +41,7 @@
     if (!empty($_POST['Login'])) {
         $email    = $_POST['email'];
         $password = $_POST['password'];
-        header('Location: mypage.php');
+        header('Location: mypage.php');  
         
             $query = "
                 SELECT * FROM `users`
