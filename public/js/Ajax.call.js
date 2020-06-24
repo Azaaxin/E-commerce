@@ -81,7 +81,7 @@ function productPage(filter){
                    $(".title").append(req.title);
                    $(".desc").append(req.description);
                    $(".price").append(req.price+"kr");
-                   $(".buyButton").append("<button class='buyBtn'>Lägg i varukorgen</button>");
+                   $(".buyButton").append("<button id='"+ req.id +"' class='buyBtn'>Lägg i varukorgen</button>");
                 
           },
           'json'
@@ -162,20 +162,22 @@ function shopping_cart(filter){
               let req = response;
               $(".product_list").css("display","block");
               $(".product_list").empty();
-              console.log(req);
               $.each(req, function(index) {
-                if(index == 0){
-                  $item = this[0];
-                }else{
+                
                   $item = req[index];
-                }
+                
                 
                   $(".product_list").append("<div id='" + $item.id + "'class='product_flex'>"+
                   "<div class='product_img_cart'><img src='"+ $item.img_url +"' width='32px' alt='product_image'></div>" +
                   "<div class='product_title'>" + $item.title + "</div>" +
                   "<div class='product_price'>" + $item.price + "kr</div>" +
+                  "<div id='" + $item.id + "' class='remove'>x</div>" +
                   "</div>");
               });
+              if(req==null){
+                $(".product_list").css("display","flex");
+                $(".product_list").append("<div class='error'>Kundvagnen är tom</div>");
+              }
           },
           'json'
       ).fail(function() {
