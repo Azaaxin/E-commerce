@@ -26,61 +26,49 @@
 
 <?php
 
-    
     require('../../src/config.php');
     require('../../src/dbconnect.php');
- //   include('public/layout/header.php');
-
-
     $pageTitle = "Login";
     $pageId = ""; 
+    error_reporting(-1);
 
-   
 
     $msg = "";
     if (isset($_GET['Loginneccesary'])) {
         $msg = '<div class="error_message">Du MÅSTE Logga in.</div>';
-   
 
-    
 
-    if (isset($_POST['Login'])) {
-        $mail    = $_POST['email'];
+    if (!empty($_POST['Login'])) {
+        $email    = $_POST['email'];
         $password = $_POST['password'];
-
-        try {
+        header('Location: mypage.php');
+        
             $query = "
-                SELECT * FROM users
-                WHERE email = :mail;
+                SELECT * FROM `users`
+                WHERE `email` = :email;
             ";
-
             $stmt = $dbconnect->prepare($query);
             $stmt->bindValue(':email', $email);
             $stmt->execute(); 
-
             $user = $stmt->fetch(); 
 
-        } catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(), (int) $e->getCode());
-        }
-            echo $user['email'];
-
-        if ($mail === $user['email'] && $password === $user['password']) {
+        if ($email === $user['email'] && $password === $user['password']) {
             echo  "logged in";
+            session_start();
             $_SESSION['email'] = $user['email'];  
             header('Location: mypage.php');
 
             exit;
         } else {
 
-            $msg = '<div class="error_message">Något blev FEL. FÖRSÖK igen.</div>';
+            echo '<div class="error_message">Något blev FEL. FÖRSÖK igen.</div>';
         }
     }
 }
 ?>
     <div id="content">
         <article class="border">
-            <form method="POST" action="#">
+            <form method="POST" action="login.php">
                 <fieldset>
                     <legend>Logga in i 4 shopen</legend>
                     

@@ -132,9 +132,8 @@
         if (empty($error)) {
             try {
                 $query = "
-                    INSERT INTO users ( `firstname`, `lastname`, `password`, `email`, `mobile`, `street`, `postalcode`, `city`, `country`)
-                    VALUES ( :firstname, :lastname, :password, :email, :mobile, :street, :postalcode, :city, :country);
-                ";
+                    INSERT INTO users ( `first_name`, `last_name`, `password`, `email`, `phone`, `street`, `postal_code`, `city`, `country`)
+                    VALUES ( :firstname, :lastname, :password, :email, :mobile, :street, :postalcode, :city, :country);";
 
                 $stmt = $dbconnect->prepare($query);
                 $stmt->bindValue(':firstname', $firstname);
@@ -147,6 +146,8 @@
                 $stmt->bindValue(':city', $city);
                 $stmt->bindValue(':country', $country);
                 $result = $stmt->execute(); 
+                session_start();
+                $_SESSION["successmsg"]=$email;
             } catch(\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
             }
