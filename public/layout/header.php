@@ -1,4 +1,5 @@
 <!--- Header file Written by Ludvig Olausson ----->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="css/header.css">
 <div class="container">
     <div class="Logo" onClick="window.location.href='index.php'"></div>
@@ -36,5 +37,11 @@
     </div>
 </div>
 <?php include "front-page/cart.php" ?>
-<script>shopping_cart();</script>
-<!--- Header file ends ----->
+<script src="js/Ajax.call.js"></script>
+<script>
+shopping_cart();
+$(document).on('click', '.buyBtn', function(){
+  $.post("functions.php?cart=true&id="+ this.id +"")
+    shopping_cart();
+});
+</script>

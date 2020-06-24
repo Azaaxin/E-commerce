@@ -23,16 +23,27 @@
         }
     }
     window.addEventListener('click', function(e){
-        if (document.getElementById('min-ca').contains(e.target) || document.getElementById('b_m').contains(e.target)){
-            document.getElementById("min-ca").style.display = "block";
-            $pin("#min-ca").cobweb("PlaceMeAt", "#basketAnchor")
+        var elementExists = document.getElementsByClassName("buyBtn")[0];
+        if (elementExists){
+                if (document.getElementById('min-ca').contains(e.target) || document.getElementById('b_m').contains(e.target) || document.getElementsByClassName("buyBtn")[0].contains(e.target)){
+                    document.getElementById("min-ca").style.display = "block";
+                    $pin("#min-ca").cobweb("PlaceMeAt", "#basketAnchor");
+                }else{
+                    close();
+                }
+        }else{
+                if (document.getElementById('min-ca').contains(e.target) || document.getElementById('b_m').contains(e.target)){
+                    document.getElementById("min-ca").style.display = "block";
+                    $pin("#min-ca").cobweb("PlaceMeAt", "#basketAnchor");
+                }else{
+                    close();
+                }
         }
-        else{
-            close();
-        }
+
+    
     });
     function close(){
         document.getElementById("min-ca").style.display = "none";
-        $pin("#min-ca").cobweb("PlaceMeAt", "#basketAnchor")
+        $pin("#min-ca").cobweb("PlaceMeAt", "#basketAnchor");
     }
 </script>
