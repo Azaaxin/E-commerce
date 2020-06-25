@@ -7,16 +7,16 @@
 	echo "<pre>";
 
 
-	try {
-	    $query = "
-	        SELECT * FROM products
-	    ";
+	// try {
+	//     $query = "
+	//         SELECT * FROM products
+	//     ";
 
-	    $stmt = $dbconnect->query($query);
-	    $products = $stmt->fetchAll();
-	} catch (\PDOException $e) {
-	    throw new \PDOException($e->getMessage(), (int) $e->getCode());
-	}
+	//     $stmt = $dbconnect->query($query);
+	//     $products = $stmt->fetchAll();
+	// } catch (\PDOException $e) {
+	//     throw new \PDOException($e->getMessage(), (int) $e->getCode());
+	// }
 
 ?>
 
@@ -39,10 +39,14 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-			<?php foreach  ($_SESSION["products_shopping"] as $productId => $product) {?> 
+			<?php 
+			
+				$product_array = $_SESSION["products_shopping"];
+			foreach($product_array as $key=>$val){
+				?>
 		    <tr>
-		      <td><?=$productId['title']?></td>
-		      <td><?=$productId['description']?></td>
+		      <td><?=$val->title; ?></td>
+		      <td><?=$val->description;?></td>
 		      <td>
 		      	<form action="delete-cart-item.php" method="POST">
 		      		<input type="hidden" name="" value="">
@@ -53,8 +57,8 @@
 					</button>
 		      	</form>
 			  </td>		      
-		      <td><?=$productId['description']?></td>
-		      <td><?=$productId['price']?></td>
+		      <td><?=$val->price; ?></td>
+		      <td><?=$val->price;?></td>
 		    </tr>
 			<?php } ?>
 		  </tbody>
