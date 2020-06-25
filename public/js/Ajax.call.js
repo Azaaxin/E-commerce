@@ -174,7 +174,7 @@ function shopping_cart(filter){
                   "<div class='product_price'>" + $item.price + "kr</div>" +
                   "<div id='" + $item.id + "' class='remove'>x</div>" +
                   "</div>");
-                  total_price = parseInt(otal_price) + parseInt($item.price);
+                  //total_price = parseInt(otal_price) + parseInt($item.price);
                   $(".sum_cart").empty();
                   $(".sum_cart").append("<div class='error'>Totalt: "+ total_price +"kr</div>");
               });
