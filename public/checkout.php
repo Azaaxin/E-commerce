@@ -1,6 +1,5 @@
 <?php  
 	session_start();
-
 	require('../src/dbconnect.php');
 
 	echo "<pre>";
@@ -8,16 +7,16 @@
 	echo "<pre>";
 
 
-	try {
-	    $query = "
-	        SELECT * FROM products
-	    ";
+	// try {
+	//     $query = "
+	//         SELECT * FROM products
+	//     ";
 
-	    $stmt = $dbconnect->query($query);
-	    $products = $stmt->fetchAll();
-	} catch (\PDOException $e) {
-	    throw new \PDOException($e->getMessage(), (int) $e->getCode());
-	}
+	//     $stmt = $dbconnect->query($query);
+	//     $products = $stmt->fetchAll();
+	// } catch (\PDOException $e) {
+	//     throw new \PDOException($e->getMessage(), (int) $e->getCode());
+	// }
 
 
 
