@@ -5,7 +5,7 @@
     <div class="Logo" onClick="window.location.href='index.php'"></div>
     <div class="Menu">
     <ul>
-        <li><a href="category-page.php">Handla</a></li>
+        <li><a href="all_products.php">Handla</a></li>
         <li><a href="admin/product.php">Admin</a></li>
         <li><a href="contact-page.php">Kontakta oss</a></li>
     </ul>
@@ -14,7 +14,7 @@
     <a href="#loading_cart" onclick="showcrt();"><img src="img/basket.svg" id="basketAnchor" alt="Basket"></a>
     </div>
     <div class="Basket_mobile">
-    <a href="cart-page.php"><img src="img/basket.svg" alt="Basket"></a>
+    <a href="checkout.php"><img src="img/basket.svg" alt="Basket"></a>
     </div>
     <div class="Hamburger">
         <div id="ham_menu" onclick="outside()" class="hamburger">

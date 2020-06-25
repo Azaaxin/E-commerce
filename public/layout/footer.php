@@ -22,7 +22,6 @@
             <a href="#">Om FYRA</a><br>
             <a href="#">Jobba hos oss</a><br>
             <a href="#">Villkor</a><br>
-            <a href="brands-page.php">Varumärken</a>
         </div>
     </div>
     <div class="social">

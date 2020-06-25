@@ -82,7 +82,6 @@
         $fromDB = writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "`id`=". $_GET['id'] ."", null, null, null);
         $array_dump = $_SESSION["products_shopping"];
             if($_SESSION["products_shopping"] == NULL){
-               // $_SESSION["products_shopping"] = array(json_decode(writeProd($dbconnect, "`id`, `title`, `description`, `price`, `img_url`", "`products`", "`id`=". $_GET['id'] ."", null, null, null)));
                 $filler = [];
                 $_SESSION["products_shopping"] = array_merge($filler, json_decode($fromDB));
             }else{ 
@@ -98,22 +97,17 @@
     }
     function remove_from_shoppingcart(){
         session_start();
-        // $res = array_filter($_SESSION["products_shopping"], function($x) {
-        //     $id = '2';
-        //     return $x["id"] != $id;
-        // });
-        
-        // print_r($res);
-            
-    
-         $arrays = array($_SESSION["products_shopping"]);  
-         $flat = call_user_func_array('array_merge', $arrays);
-         $res = array_filter($flat, function($x) {
-             $id = '5';
-             return $x["id"] == '2';
+
+        $arrays = json_decode(json_encode($_SESSION["products_shopping"]), true);
+         $res = array_filter($arrays, function($x) {
+            $id = $_GET['id'];
+             return $x["id"] != $id;
          });
- 
+         unset($_SESSION["products_shopping"]);
+         $_SESSION["products_shopping"] = $res;
+        echo "<pre>";
           echo json_encode($res);
+        echo "</pre>";
     }
     if($_GET['del_cart']=="true"){
         remove_from_shoppingcart();
