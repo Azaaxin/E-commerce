@@ -163,22 +163,30 @@ function shopping_cart(filter){
               let req = response;
               $(".product_list").css("display","block");
               $(".product_list").empty();
+              let arr = [];
               $.each(req, function(index) {
-                
+                total_price = total_price + parseFloat(req[index].price);
+                if(jQuery.inArray(req[index].id,arr) == -1){
                   $item = req[index];
-                
-                
+                  arr.push($item.id);
                   $(".product_list").append("<div id='" + $item.id + "'class='product_flex'>"+
                   "<div class='product_img_cart'><img src='"+ $item.img_url +"' width='32px' alt='product_image'></div>" +
+                  "<input id='amount_" + $item.id + "' name='Namount_" + $item.id + "' value='1' type='number' readonly>" +
                   "<div class='product_title'>" + $item.title + "</div>" +
                   "<div class='product_price'>" + $item.price + "kr</div>" +
                   "<div id='" + $item.id + "' class='remove'>x</div>" +
                   "</div>");
                   //total_price = parseInt(otal_price) + parseInt($item.price);
+                }else{
+                  amnt = parseInt($("#amount_" + $item.id).attr("value")) + parseInt("1");
+                  $("#amount_" + $item.id).attr("value", amnt);
+                  
+                };
+                  
                   $(".sum_cart").empty();
                   $(".sum_cart").append("<div class='error'>Totalt: "+ total_price +"kr</div>");
               });
-              if(req==null){
+              if(req==""){
                 $(".product_list").css("display","flex");
                 $(".product_list").append("<div class='error'>Kundvagnen är tom</div>");
               }

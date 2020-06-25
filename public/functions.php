@@ -105,15 +105,16 @@
         
         // print_r($res);
             
-    
-         $arrays = array($_SESSION["products_shopping"]);  
-         $flat = call_user_func_array('array_merge', $arrays);
-         $res = array_filter($flat, function($x) {
-             $id = '5';
-             return $x["id"] == '2';
+        $arrays = json_decode(json_encode($_SESSION["products_shopping"]), true);
+         $res = array_filter($arrays, function($x) {
+            $id = $_GET['id'];
+             return $x["id"] != $id;
          });
- 
+         unset($_SESSION["products_shopping"]);
+         $_SESSION["products_shopping"] = $res;
+        echo "<pre>";
           echo json_encode($res);
+        echo "</pre>";
     }
     if($_GET['del_cart']=="true"){
         remove_from_shoppingcart();

@@ -6,8 +6,8 @@
     <div onclick="showcrt('c')" class="cart_img"><img src="img/cancel.svg" alt="Cancel" width="16px"></div>
     <div class="product_list">Kundvagnen är tom</div>
     <div class="product_flex">
-    <div class="sum_cart">Totalt: ‭403.992‬kr</div>
-    <div class="checkout_knapp"><button class="button_cart" onClick="window.location.href='cart-page.php'">Till kassan</button></div>
+    <div class="sum_cart"></div>
+    <div class="checkout_knapp"><button class="button_cart" onClick="window.location.href='checkout.php'">Till kassan</button></div>
     </div>
     <script src="js/spincore.min.js"></script>
 </div>
@@ -44,4 +44,13 @@
         document.getElementById("min-ca").style.display = "none";
         $pin("#min-ca").cobweb("PlaceMeAt", "#basketAnchor");
     }
+    $(document).on('click', '.remove', function(){
+        $.ajax({
+            type: "POST",
+            url: "functions.php?del_cart=true&id=" + this.id,
+            data: {id: this.id}
+        });
+        shopping_cart();
+    });
+
 </script>
