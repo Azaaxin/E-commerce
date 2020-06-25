@@ -132,7 +132,7 @@
         if (empty($error)) {
             try {
                 $query = "
-                    INSERT INTO users ( `first_name`, `last_name`, `password`, `email`, `phone`, `street`, `postal_code`, `city`, `country`)
+                    INSERT INTO users ( `firstname`, `lastname`, `password`, `email`, `phone`, `street`, `postal_code`, `city`, `country`)
                     VALUES ( :firstname, :lastname, :password, :email, :mobile, :street, :postalcode, :city, :country);";
 
                 $stmt = $dbconnect->prepare($query);
