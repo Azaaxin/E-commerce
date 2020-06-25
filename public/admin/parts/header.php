@@ -4,8 +4,8 @@
     <div class="Menu">
     <ul>
         <li><a href="product.php">Produkter</a></li>
-        <li><a href="../reparation-page.php">Användare</a></li>
-        <li><a href="../contact-page.php">Ordrar</a></li>
+        <li><a href="index.php">Användare</a></li>
+       
     </ul>
     </div>  
     <div class="Hamburger">

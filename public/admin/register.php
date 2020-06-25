@@ -12,16 +12,35 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/phone_menu.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/style.css">
+<link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
     <script src="js/phone_menu.js"></script>
+    <style>
+        #content, #content>p{
+            display: flex;
+            justify-content: center;
+        }
+        
+    </style>
 </head>
 <body>
 <?php 
-    include "layout/header.php";
-    include "layout/phone_menu.php";
+error_reporting(0);
+ini_set('display_errors', 0);
+include "parts/header.php"; 
+    include "../layout/phone_menu.php";
 ?> 
 
-<?php 
-    require('src/config.php');
+
+<?php
+
+    
+    require('../../src/config.php');
+    require('../../src/dbconnect.php');
     
     //checkLoginSession();
 
@@ -122,9 +141,8 @@
         if (empty($error)) {
             try {
                 $query = "
-                    INSERT INTO users ( `firstname`, `lastname`, `password`, `email`, `mobile`, `street`, `postalcode`, `city`, `country`)
-                    VALUES ( :firstname, :lastname, :password, :email, :mobile, :street, :postalcode, :city, :country);
-                ";
+                    INSERT INTO users ( `firstname`, `lastname`, `password`, `email`, `phone`, `street`, `postal_code`, `city`, `country`)
+                    VALUES ( :firstname, :lastname, :password, :email, :mobile, :street, :postalcode, :city, :country);";
 
                 $stmt = $dbconnect->prepare($query);
                 $stmt->bindValue(':firstname', $firstname);
@@ -137,13 +155,15 @@
                 $stmt->bindValue(':city', $city);
                 $stmt->bindValue(':country', $country);
                 $result = $stmt->execute(); 
+                session_start();
+                $_SESSION["successmsg"]=$email;
             } catch(\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
             }
 
 
             if ($result) {
-                $msg = '<div class="success_msg">Gratulerar. Ditt konto är skapat. Nu kan du köpa de skor du vill ha!</div>';
+                $msg = '<div class="success_msg">Gratulerar. Ditt konto är skapat. Nu kan du köpa de du vill ha!</div>';
             } else {
                 $msg = '<div class="error_msg">Tyvärr misslyckades registering av nån anledning. Försök igen för att kunna köpa just den skon du vill ha</div>';
             }
@@ -152,15 +172,14 @@
 
 ?>
 
-
  
     <div id="content">
         <article class="border">
             <form method="POST" action="#">
                 <fieldset>
-                    <legend>Registrera dig för att kunna köpa de skor du vill ha!</legend>
+                    <legend>Registrera dig för att kunna köpa de du vill ha!</legend>
                     
-                    
+                    <a href="login.php">Är du redan kund hos oss? Klicka här</a>
                     <?=$msg?>
                     
                     <p>
@@ -204,12 +223,12 @@
                     </p>
 
                     <p>
-                        <label for="input1">Din Stad du går omkring med dina skor i:</label> <br>
+                        <label for="input1">Din Stad:</label> <br>
                         <input type="text" class="text" name="city" value="<?=htmlentities($city)?>">
                     </p>
 
                     <p>
-                        <label for="input1">Ditt Land du går omkring med dina skor i:</label> <br>
+                        <label for="input1">Ditt Land:</label> <br>
                         <input type="text" class="text" name="country" value="<?=htmlentities($country)?>">
                     </p>
 
@@ -220,12 +239,6 @@
             </form>
         
             <hr>
-        </article>
-    </div>
-
-
-
-
             <p>
                 <input action="users.php?" type="submit" name="signup" value="Uppdatera">
             </p>
@@ -236,10 +249,17 @@
             </form>
            
         </form>
+        </article>
+        
+    </div>
+
+
+
+ 
+       
     </div> 
     
 </body>
-
-<?php include('layout/footer.php'); ?>
+<?php include('../layout/footer.php'); ?>
 
 </html>

@@ -6,6 +6,8 @@ $('.editable').each(function(){
 var changed = false;
 $('body').click(function (e) {
     if ($(e.target).is($(".overlay"))) {
+      $(".feed").empty();
+      admin_read();
      $("#Ctextarea_hidden").val($(".CDdesc").html());
       if($('#wcreate').is(':visible')){
         if($('.CDtitle').val() != "" || $('.CDimage').val() != "" || $('.CDprice').val() != ""|| $('#Ctextarea_hidden').val() != ""){

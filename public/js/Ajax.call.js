@@ -7,7 +7,6 @@ function front_page_ajax(){
     $.get(baseUrl + '?data=' + "main_prod", function(response) {
 
                 let req = response;
-              //  $.each(req, function(index) {
                     for(let index=0; index<12; index++){
                     var t = $("<div class=Item>" +
                     "<div id='"+ req[index].id +"' class='cont'>" +
@@ -28,7 +27,6 @@ function all_products(){
   $.get(baseUrl + '?data=' + "main_prod", function(response) {
 
               let req = response;
-            //  $.each(req, function(index) {
               $.each(req, function(index) {
                   var t = $("<div class=Item>" +
                   "<div id='"+ req[index].id +"' class='cont'>" +
@@ -50,7 +48,6 @@ function reco_front_page_ajax(){
   $.get(baseUrl + '?data=' + "rec_prod", function(response) {
 
               let req = response;
-            //  $.each(req, function(index) {
                   for(let index=0; index<9; index++){
                     var t= $("<div class='Item maxEight rec_item"+index+"'>" +
                       "<div id='"+ req[index].id +"' class='cont'>" +
@@ -70,12 +67,10 @@ function reco_front_page_ajax(){
       });
 }
 function brandsAjaxProducts(filter){
-  //$( "._procontainer .Item" ).hide();
   let baseUrl = '../public/functions.php';
   $.get(baseUrl + '?data=' + "front_brand" + "&filter=" + filter, function(response) {
 
               let req = response;
-            //  $.each(req, function(index) {
                   for(let index=0; index<12; index++){
                     let produrl = "location.href='product-page.php?id='";
                   var t = $("<div class=Item>" +
@@ -93,12 +88,10 @@ function brandsAjaxProducts(filter){
       });
 }
 function productPage(filter){
-  //$( "._procontainer .Item" ).hide();
   let baseUrl = '../public/functions.php';
   $.get(baseUrl + '?data=' + "prod" + "&id=" + filter, function(response) {
 
               let req = response[0];
-            //  $.each(req, function(index) {
                    $(".image").append("<img src='"+ req.img_url +"' alt='' srcset=''>");
                    $(".title").append(req.title);
                    $(".desc").append(req.description);
@@ -198,7 +191,6 @@ function shopping_cart(filter){
                   "<div class='product_price'>" + $item.price + "kr</div>" +
                   "<div id='" + $item.id + "' class='remove'>x</div>" +
                   "</div>");
-                  //total_price = parseInt(otal_price) + parseInt($item.price);
                 }else{
                   amnt = parseInt($("#amount_" + $item.id).attr("value")) + parseInt("1");
                   $("#amount_" + $item.id).attr("value", amnt);

@@ -27,7 +27,7 @@
         <span></span>
     </div>
     <div class="user_area">
-        <a href="register.php">Logga in</a> 
+        <a href="admin/register.php"><?php if(!empty($user['email'])){ echo "Mina sidor"; }else{echo "Logga in"; }?></a> 
     </div>
 </div>
 <div class="shipping">

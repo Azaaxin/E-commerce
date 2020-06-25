@@ -11,18 +11,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/phone_menu.css">
+<link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
     <script src="js/phone_menu.js"></script>
 </head>
 <body>
 <?php 
-    include "layout/header.php";
-    include "layout/phone_menu.php";
+error_reporting(0);
+ini_set('display_errors', 0);
+    include "../layout/header.php";
+    include "../layout/phone_menu.php";
 ?> 
 
-<?php 
-   <?php
-    require('src/config.php');
-    require('src/dbconnect.php');
+
+<?php
+
+    
+    require('../../src/config.php');
+    require('../../src/dbconnect.php');
     
     $msg             = '';
 
@@ -54,7 +62,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="input1">Mail-adress:</label> <br>
-                                <input type="text" class="form-control" name="mail" value="<?=htmlentities($user['email'])?>">
+                                <input type="text" class="form-control" name="email" value="<?=htmlentities($user['email'])?>">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="input1">Mobilnummer:</label> <br>
@@ -99,9 +107,9 @@
         </div>
     
         
-
+ 
 </body>
 
-<?php include('layout/footer.php'); ?>
+<?php include('../layout/footer.php'); ?>
 
 </html>
