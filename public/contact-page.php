@@ -22,7 +22,7 @@
         <ul>
           <li>Åsögatan 117</li><br>
           <li>08-123-4567</li><br>
-          <li>Trailstop@cmeducations.se</li>
+          <li>fyra@cmeducations.se</li>
         </ul>
         <p class="openings">Våra öppettider är:<br> Mån-Sön 9.00 - 15.00</p>
       </div>

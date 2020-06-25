@@ -23,6 +23,28 @@ function front_page_ajax(){
             
         });
 }
+function all_products(){
+  let baseUrl = '../public/functions.php';
+  $.get(baseUrl + '?data=' + "main_prod", function(response) {
+
+              let req = response;
+            //  $.each(req, function(index) {
+              $.each(req, function(index) {
+                  var t = $("<div class=Item>" +
+                  "<div id='"+ req[index].id +"' class='cont'>" +
+                  "<div class='img_c'><img src='" + req[index].img_url + "' width='30%'></div>" +
+                  "<div class='brand_n'>Brand</div>" +
+                  "<div class='title'>"+ req[index].title +"</div>" +
+                  "<div class='prize'>"+ req[index].price +"kr</div></div></div>");
+                  $(".reco_container").append(t);
+                });
+              
+          },
+          'json'
+      ).fail(function() {
+          
+      });
+}
 function reco_front_page_ajax(){
   let baseUrl = '../public/functions.php';
   $.get(baseUrl + '?data=' + "rec_prod", function(response) {

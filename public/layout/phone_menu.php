@@ -15,8 +15,7 @@
     <div class="flex-menu-wrapper">
         <div class="box_menu" onclick="window.location.href='index.php'">Hem</div>
         <div class="box_menu" onclick="window.location.href='admin/product.php'">Admin</div>
-        <div class="box_menu" onclick="window.location.href='reparation-page.php'">Service</div>
-        <div class="box_menu" onclick="window.location.href='contact-page.php'">Kontakt</div>
+        <div class="box_menu" onclick="window.location.href='all_products.php'">Handla</div>
     </div>
 </div>
 <!--- phone menu end --->
