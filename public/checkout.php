@@ -1,6 +1,5 @@
 <?php  
 	session_start();
-
 	require('../src/dbconnect.php');
 
 	echo "<pre>";
@@ -40,7 +39,7 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-			<?php foreach  $ARRAY = json_decode($_SESSION["products_shopping"],true); as $productId => $product) {?> 
+			<?php foreach  ($_SESSION["products_shopping"] as $productId => $product) {?> 
 		    <tr>
 		      <td><?=$productId['title']?></td>
 		      <td><?=$productId['description']?></td>
