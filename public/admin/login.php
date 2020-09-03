@@ -40,15 +40,15 @@ print_r($_SESSION["products_shopping"]);
 
 
     $msg = "";
-    if (isset($_GET['Loginneccesary'])) {
+    if (isset($_GET['mustLogin'])) {
         $msg = '<div class="error_message">Du MÅSTE Logga in.</div>';
 
 }
 
-    if (isset($_POST['Login'])) {
+    if (isset($_POST['doLogin'])) {
         $email    = $_POST['email'];
         $password = $_POST['password'];
-        header('Location: mypage.php');
+        
         
         try {
             $query = "
@@ -75,7 +75,7 @@ print_r($_SESSION["products_shopping"]);
             exit;
         } else {
 
-            echo '<div class="error_message">Något blev FEL. FÖRSÖK igen.</div>';
+            $msg '<div class="error_message">Något blev FEL. FÖRSÖK igen.</div>';
         }
     }
 ?>  

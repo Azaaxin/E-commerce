@@ -124,7 +124,7 @@ include "parts/header.php";
             $error .= "<li>Du MÅSTE ange ett LAND</li>";
         }
         if (!empty($password) && strlen($password) < 6) {
-            $error .= "<li>Lösenordet MÅSTE vara längre än 6 tecken (och helst ej Jordan ;) )</li>";
+            $error .= "<li>Lösenordet MÅSTE vara längre än 6 tecken  </li>";
         }
         if ($confirmPass !== $password) {
             $error .= "<li>Lösenordet STÄMMER EJ överrens</li>";
@@ -165,7 +165,7 @@ include "parts/header.php";
             if ($result) {
                 $msg = '<div class="success_msg">Gratulerar. Ditt konto är skapat. Nu kan du köpa de du vill ha!</div>';
             } else {
-                $msg = '<div class="error_msg">Tyvärr misslyckades registering av nån anledning. Försök igen för att kunna köpa just den skon du vill ha</div>';
+                $msg = '<div class="error_msg">Tyvärr misslyckades registering av nån anledning. Försök igen för att kunna köpa just den telefon du vill ha</div>';
             }
         }
     }

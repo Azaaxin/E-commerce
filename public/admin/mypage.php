@@ -19,34 +19,168 @@
 </head>
 <body>
 <?php 
-error_reporting(0);
-ini_set('display_errors', 0);
+error_reporting(-1);
+ini_set('display_errors', -1);
  include "parts/header.php"; 
     include "../layout/phone_menu.php";
 ?> 
 
 
-<?php
+<?php 
 
     
     require('../../src/config.php');
     require('../../src/dbconnect.php');
 
-if (!isset($_SESSION['firstname'])) {
+if (!isset($_SESSION['email'])) {
         //header('login.php?mustLogin');
-        header('Location: login.php?mustLogin');
-        exit;
+        header('location: login.php?mustLogin');
+       
 }
 
 
-if (isset($_SESSION['firstname'])){
+if (isset($_SESSION['email'])){
     $user = fetchUsersById($_SESSION['id']);
 }
 
 
-?>
+<?php 
 
+
+
+$first_name  = '';
+$last_name   = '';
+$email       = '';
+$password    = '';
+$mobile       = '';
+$street      = '';
+$postal_code = '';
+$city        = '';
+$country     = '';
+$error       = '';
+$msg         = '';
+
+if (isset($_POST['update'])) {
+    $first_name      = trim($_POST['first_name']);
+    $last_name       = trim($_POST['last_name']);
+    $email           = trim($_POST['email']);
+    $password        = trim($_POST['password']);
+    $mobile           = trim($_POST['mobile']);
+    $street          = trim($_POST['street']);
+    $postal_code     = trim($_POST['postal_code']);
+    $city            = trim($_POST['city']);
+    $country         = trim($_POST['country']);
     
+    
+    if (empty($first_name)) {
+        $error .= "<li>Du MÅSTE ange ett FÖRNAMN</li>";
+    }
+    if (empty($last_name)) {
+        $error .= "<li>Du MÅSTE ange ett EFTERNAMN</li>";
+    }
+    if (empty($email)) {
+         $error .= "<li>Du MÅSTE ange en MAILADRESS</li>";
+    }
+    if (empty($password)) {
+        $error .= "<li>Lösenord är obligatoriskt</li>";
+    }
+    if (!empty($password) && strlen($password) < 6) {
+        $error .= "<li>Lösenordet MÅSTE vara längre än 6 tecken  </li>";
+    }
+    if (empty($mobile)) {
+        $error .= "<li>Du MÅSTE ange ett MOBILNUMMER</li>";
+    }
+    if (empty($street)) {
+        $error .= "<li>Du MÅSTE ange en ADRESS</li>";
+    }
+    if (empty($postal_code)) {
+        $error .= "<li>Du MÅSTE ange ett POSTNUMMER</li>";
+    }
+    if (empty($city)) {
+       $error .= "<li>Du MÅSTE ange en STAD</li>";
+    }
+    if (empty($country)) {
+        $error .= "<li>Du MÅSTE ange ett LAND</li>";
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error .= "<li>Ogiltig e-post</li>";
+    }
+    
+    
+    
+
+    if ($error) {
+        $msg = "<ul class='error_msg'>{$error}</ul>";
+    }
+
+    if (empty($error)) {
+        try {
+            $query = "
+                UPDATE users
+                SET first_name = :first_name, last_name = :last_name, password = :password, email = :email, mobile = :mobile, street = :street, postal_code = :postal_code, city = :city, country = :country
+                WHERE email = :email
+            ";
+
+            
+
+            $stmt = $dbconnect->prepare($query);
+            $stmt->bindValue(':first_name', $first_name);
+            $stmt->bindValue(':last_name', $last_name);
+            $stmt->bindValue(':password', $password);
+            $stmt->bindValue(':email', $email);
+            $stmt->bindValue(':mobile', $mobile);
+            $stmt->bindValue(':street', $street);
+            $stmt->bindValue(':postal_code', $postal_code);
+            $stmt->bindValue(':city', $city);
+            $stmt->bindValue(':country', $country);
+            
+            $result = $stmt->execute(); 
+        } catch(\PDOException $e) {
+            throw new \PDOException($e->getMessage(), (int) $e->getCode());
+        }
+
+        if ($result) {
+            $msg = '<div class="success_msg">Dina uppgifter har uppdaterats</div>';
+        } else {
+            $msg = '<div class="error_msg">Uppdateringen av användaren misslyckades. Var snäll och försök igen senare!</div>';
+        }
+    }
+}
+
+
+try {
+    
+    $query = "SELECT * FROM users 
+              WHERE email = :email;";
+    $stmt = $dbconnect->prepare($query);
+    $stmt->bindvalue(':email', $_SESSION['email']);
+    $stmt->execute();
+    $user = $stmt->fetch();
+}   catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+       }
+
+
+
+    if (isset($_POST['deleteBtn'])) {
+        try {
+                        $query = "
+                        DELETE FROM users
+                        WHERE email = :email;
+                        ";
+
+                        $stmt = $dbconnect->prepare($query);
+                        $stmt->bindValue(':email', $_POST['email']);
+                        $stmt->execute();
+                        session_destroy();
+                        header('Location: index.php?logout');
+                        exit;
+               }        catch (\PDOException $e) {
+                        throw new \PDOException($e->getMessage(), (int) $e->getCode());
+            }
+}
+?>
 
     
 
@@ -55,12 +189,12 @@ if (isset($_SESSION['firstname'])){
         <div class="row">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><b>User Id: </b><?php echo $user['id']?></li>
-                <li class="list-group-item"><b>Förnamn: </b><?=htmlentities(ucfirst($user['firstname']));?></li>
-                <li class="list-group-item"><b>Efternamn: </b><?=htmlentities(ucfirst($user['lastname']));?></li>
+                <li class="list-group-item"><b>Förnamn: </b><?=htmlentities(ucfirst($user['firs_tname']));?></li>
+                <li class="list-group-item"><b>Efternamn: </b><?=htmlentities(ucfirst($user['last_name']));?></li>
                 <li class="list-group-item"><b>E-post: </b><?=htmlentities($user['email']);?></li>
                 <li class="list-group-item"><b>Mobil: </b><?=htmlentities($user['mobile']);?></li>
                 <li class="list-group-item"><b>Adress: </b><?=htmlentities(ucfirst($user['street']));?></li>
-                <li class="list-group-item"><b>Postnummer: </b><?=htmlentities($user['postalcode']);?></li>
+                <li class="list-group-item"><b>Postnummer: </b><?=htmlentities($user['postal_code']);?></li>
                 <li class="list-group-item"><b>Stad: </b><?=htmlentities(ucfirst($user['city']));?></li>
                 <li class="list-group-item"><b>Land: </b><?=htmlentities(ucfirst($user['country']));?></li>
                 <li class="list-group-item"><b>Register Date: </b><?=htmlentities($user['register_date']);?></li>
