@@ -19,8 +19,8 @@
 </head>
 <body>
 <?php 
-error_reporting(0);
-ini_set('display_errors', 0);
+error_reporting(-1);
+ini_set('display_errors', -1);
 
  include "parts/header.php"; 
     include "../layout/phone_menu.php";
@@ -34,7 +34,7 @@ ini_set('display_errors', 0);
 
     session_start();
 
-print_r($_SESSION["products_shopping"]);
+//print_r($_SESSION["products_shopping"]);
 
 
 
@@ -45,7 +45,7 @@ print_r($_SESSION["products_shopping"]);
 
 }
 
-    if (isset($_POST['doLogin'])) {
+    if (isset($_POST['Login'])) {
         $email    = $_POST['email'];
         $password = $_POST['password'];
         
@@ -75,7 +75,7 @@ print_r($_SESSION["products_shopping"]);
             exit;
         } else {
 
-            $msg '<div class="error_message">Något blev FEL. FÖRSÖK igen.</div>';
+            $msg = '<div class="error_message">Något blev FEL. FÖRSÖK igen.</div>';
         }
     }
 ?>  

@@ -40,19 +40,34 @@ if (!isset($_SESSION['email'])) {
 
 
 if (isset($_SESSION['email'])){
-    $user = fetchUsersById($_SESSION['id']);
+    // $user = fetchUsersById($_SESSION['id']);
+
+
+try {
+            $query = "
+                SELECT * FROM users
+                WHERE email = :email;
+            ";
+
+            $stmt = $dbconnect->prepare($query);
+            $stmt->bindValue(':email', $email);
+            $stmt->execute(); 
+            $user = $stmt->fetch(); 
+
+        }
+
+         catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage(), (int) $e->getCode());
+        }
+
 }
-
-
-<?php 
-
 
 
 $first_name  = '';
 $last_name   = '';
 $email       = '';
 $password    = '';
-$mobile       = '';
+$phone       = '';
 $street      = '';
 $postal_code = '';
 $city        = '';
@@ -65,7 +80,7 @@ if (isset($_POST['update'])) {
     $last_name       = trim($_POST['last_name']);
     $email           = trim($_POST['email']);
     $password        = trim($_POST['password']);
-    $mobile           = trim($_POST['mobile']);
+    $phone          = trim($_POST['phone']);
     $street          = trim($_POST['street']);
     $postal_code     = trim($_POST['postal_code']);
     $city            = trim($_POST['city']);
@@ -87,7 +102,7 @@ if (isset($_POST['update'])) {
     if (!empty($password) && strlen($password) < 6) {
         $error .= "<li>Lösenordet MÅSTE vara längre än 6 tecken  </li>";
     }
-    if (empty($mobile)) {
+    if (empty($phone)) {
         $error .= "<li>Du MÅSTE ange ett MOBILNUMMER</li>";
     }
     if (empty($street)) {
@@ -118,7 +133,7 @@ if (isset($_POST['update'])) {
         try {
             $query = "
                 UPDATE users
-                SET first_name = :first_name, last_name = :last_name, password = :password, email = :email, mobile = :mobile, street = :street, postal_code = :postal_code, city = :city, country = :country
+                SET first_name = :first_name, last_name = :last_name, password = :password, email = :email, phone = :phone, street = :street, postal_code = :postal_code, city = :city, country = :country
                 WHERE email = :email
             ";
 
@@ -129,7 +144,7 @@ if (isset($_POST['update'])) {
             $stmt->bindValue(':last_name', $last_name);
             $stmt->bindValue(':password', $password);
             $stmt->bindValue(':email', $email);
-            $stmt->bindValue(':mobile', $mobile);
+            $stmt->bindValue(':phone', $phone);
             $stmt->bindValue(':street', $street);
             $stmt->bindValue(':postal_code', $postal_code);
             $stmt->bindValue(':city', $city);
@@ -163,7 +178,7 @@ try {
 
 
 
-    if (isset($_POST['deleteBtn'])) {
+    if (isset($_POST['deleteUserBtn'])) {
         try {
                         $query = "
                         DELETE FROM users
@@ -189,10 +204,10 @@ try {
         <div class="row">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><b>User Id: </b><?php echo $user['id']?></li>
-                <li class="list-group-item"><b>Förnamn: </b><?=htmlentities(ucfirst($user['firs_tname']));?></li>
+                <li class="list-group-item"><b>Förnamn: </b><?=htmlentities(ucfirst($user['first_name']));?></li>
                 <li class="list-group-item"><b>Efternamn: </b><?=htmlentities(ucfirst($user['last_name']));?></li>
                 <li class="list-group-item"><b>E-post: </b><?=htmlentities($user['email']);?></li>
-                <li class="list-group-item"><b>Mobil: </b><?=htmlentities($user['mobile']);?></li>
+                <li class="list-group-item"><b>Mobil: </b><?=htmlentities($user['phone']);?></li>
                 <li class="list-group-item"><b>Adress: </b><?=htmlentities(ucfirst($user['street']));?></li>
                 <li class="list-group-item"><b>Postnummer: </b><?=htmlentities($user['postal_code']);?></li>
                 <li class="list-group-item"><b>Stad: </b><?=htmlentities(ucfirst($user['city']));?></li>
