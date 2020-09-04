@@ -50,9 +50,11 @@ try {
             ";
 
             $stmt = $dbconnect->prepare($query);
-            $stmt->bindValue(':email', $email);
+            $stmt->bindvalue(':email', $_SESSION['email']);
             $stmt->execute(); 
             $user = $stmt->fetch(); 
+
+            
 
         }
 
@@ -216,13 +218,19 @@ try {
             </ul>
         </div> 
         <div class="submitBtns">
-            <form action="update-user.php" method="GET">
-                <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+            <form action="update_user.php" method="GET">
+                <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
                 <input type="submit" value="UPDATE">
             </form>
             <form action="" method="POST">
-                <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
                 <input type="submit" name="deleteUserBtn" value="Radera detta konto">
+
+                </form>
+
+                <form action="login.php" method="GET">
+                <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
+                <input type="submit" value="Till login>
 	</section>
     
 </body>

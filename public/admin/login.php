@@ -32,7 +32,7 @@ ini_set('display_errors', -1);
     require('../../src/config.php');
     require('../../src/dbconnect.php');
 
-    session_start();
+    // session_start();
 
 //print_r($_SESSION["products_shopping"]);
 

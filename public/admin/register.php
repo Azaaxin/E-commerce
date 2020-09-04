@@ -77,10 +77,10 @@ include "parts/header.php";
     $pageId = "";
 
 
-    $firstname      = '';
-    $lastname       = '';
+    $first_name      = '';
+    $last_name       = '';
     $email           = '';
-    $mobile           = '';
+    $phone           = '';
     $street          = '';
     $postalcode     = '';
     $city            = '';
@@ -88,27 +88,27 @@ include "parts/header.php";
     $error           = '';
     $msg             = '';
     if (isset($_POST['register'])) {
-        $firstname        = trim($_POST['firstname']);
-        $lastname         = trim($_POST['lastname']);
+        $first_name        = trim($_POST['first_name']);
+        $last_name         = trim($_POST['last_name']);
         $email             = trim($_POST['email']);
         $password          = trim($_POST['password']);
         $confirmPass        = trim($_POST['confirmPass']);
-        $mobile            = trim($_POST['mobile']);
+        $phone            = trim($_POST['phone']);
         $street            = trim($_POST['street']);
         $postalcode       = trim($_POST['postalcode']);
         $city              = trim($_POST['city']);
         $country           = trim($_POST['country']);
 
-        if (empty($firstname)) {
+        if (empty($first_name)) {
             $error .= "<li>Du MÅSTE ange ett FÖRNAMN</li>";
         }
-        if (empty($lastname)) {
+        if (empty($last_name)) {
             $error .= "<li>Du MÅSTE ange ett EFTERNAMN</li>";
         }
         if (empty($email)) {
             $error .= "<li>Du MÅSTE ange en MAILADRESS</li>";
         }
-        if (empty($mobile)) {
+        if (empty($phone)) {
             $error .= "<li>Du MÅSTE ange ett MOBILNUMMER</li>";
         }
         if (empty($street)) {
@@ -141,15 +141,15 @@ include "parts/header.php";
         if (empty($error)) {
             try {
                 $query = "
-                    INSERT INTO users ( `firstname`, `lastname`, `password`, `email`, `phone`, `street`, `postal_code`, `city`, `country`)
-                    VALUES ( :firstname, :lastname, :password, :email, :mobile, :street, :postalcode, :city, :country);";
+                    INSERT INTO users ( `first_name`, `last_name`, `password`, `email`, `phone`, `street`, `postal_code`, `city`, `country`)
+                    VALUES ( :first_name, :last_name, :password, :email, :phone, :street, :postalcode, :city, :country);";
 
                 $stmt = $dbconnect->prepare($query);
-                $stmt->bindValue(':firstname', $firstname);
-                $stmt->bindValue(':lastname', $lastname);
+                $stmt->bindValue(':first_name', $firs_tname);
+                $stmt->bindValue(':last_name', $last_name);
                 $stmt->bindValue(':password', $password);
                 $stmt->bindValue(':email', $email);
-                $stmt->bindValue(':mobile', $mobile);
+                $stmt->bindValue(':phone', $phone);
                 $stmt->bindValue(':street', $street);
                 $stmt->bindValue(':postalcode', $postalcode);
                 $stmt->bindValue(':city', $city);

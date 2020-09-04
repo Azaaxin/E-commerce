@@ -19,7 +19,7 @@
         <span></span>
     </div>
     <div class="user_area">
-        <a href="register.php">Logga in</a> 
+        <a href="login.php">LOGGA IN </a> 
     </div>
 </div>
 
