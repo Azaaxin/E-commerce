@@ -5,7 +5,7 @@
     <meta name="author" content="Andreas Ronvall">
     <meta name="description" content="Andreas Ronvall Logga in i 4-shoppen">
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Logga In i 4 shopen</title>
+    <title>Logga In I 4 shopen</title>
     <link rel="stylesheet" href="css/register.css">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
