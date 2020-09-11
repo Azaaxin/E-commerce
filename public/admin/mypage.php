@@ -96,7 +96,7 @@ if (isset($_POST['update'])) {
         $error .= "<li>Du MÅSTE ange ett EFTERNAMN</li>";
     }
     if (empty($email)) {
-         $error .= "<li>Du MÅSTE ange en MAILADRESS</li>";
+         $error .= "<li>Du MÅSTE ange en korr. MAILADRESS</li>";
     }
     if (empty($password)) {
         $error .= "<li>Lösenord är obligatoriskt</li>";

@@ -92,7 +92,7 @@
 			  </div>
 			  <div class="form-row">
 				  <div class="form-group col-md-6">
-				    <label for="inputAddress">Epost</label>
+				    <label for="inputAddress">E-post</label>
 				    <input type="text" class="form-control" name="email" id="inputAddress" placeholder="1234 Main St">
 				  </div>
 				  <div class="form-group col-md-6">
