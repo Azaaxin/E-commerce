@@ -25,6 +25,8 @@
 </head>
 <body>
 	<div class="container">
+<?php include ('cart-page.php') ?>
+
 		<table class="table table-borderless">
 		  <thead>
 		    <tr>
@@ -44,6 +46,7 @@
 				?>
 		    <tr>
 		      <td><?=$val->title; ?></td>
+
 		      <td><?=$val->description;?></td>
 		      <td>
 
@@ -62,21 +65,30 @@
 				</td>	
 
 <td>
-            <form class="update-cart-form" action="update-cart-items.php" method="POST">
-              <input type="hidden" name="key" value="<?=$key?>">
-              <input type="number" name="quantity" value="<?=$val['quantity']?>" min="0" class="quantity">
+            
+            	<form class="update-cart-form" action="update-cart-items.php" method="POST">
+
+            		<input type="hidden" name="key" value="<?="$key"?>">
+              
+             <input type="number" name="quantity" value="<?=$key['quantity']?>" min="0" >
             </form>
           </td>
 
-
-
-			<td><?=$val->price; ?></td>
-		      <td><?=$val->price;?></td>
+			
+		      <td><?=$val->price;?> kronor</td>
 		    </tr>
 			<?php } ?>
+
+			<tr class="border.top">
+
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><b>Total summa: <?=$sum_cart?> SEK</b></td>
+		</tr>
 		  </tbody>
 		</table>
-
 
 
 		<form action="create-order.php" method="POST">
@@ -141,8 +153,14 @@
 	</div>
 
 	
+<script type="text/javascript">
+	$('.update-cart-form input[name="quantity"]').on('change', function () {
+		$(this).parent().submit();
+		
+		});
+	
 
-
+</script>
 
 
 </body>
