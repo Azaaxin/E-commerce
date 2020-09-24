@@ -85,7 +85,7 @@
 			<td></td>
 			<td></td>
 			<td></td>
-			<td><b>Total summa: <?=$sum_cart?> SEK</b></td>
+			<td><b>Total summa korg: <?=$sum_cart?> SEK</b></td>
 		</tr>
 		  </tbody>
 		</table>
